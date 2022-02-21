@@ -1,2 +1,0 @@
-import{useEffect as r}from"react";import{OrbitControls as e}from"three/examples/jsm/controls/OrbitControls";import{Color as o}from"three/src/math/Color";import*as t from"mathbox";var n=function(n){return r((function(){var r=t.mathBox({plugins:["core","controls","cursor"],controls:{klass:e},element:n.element});r.three.camera.position.set(1,1,2),r.three.renderer.setClearColor(new o(16777215),1),r.cartesian({range:[[-2,2],[-1,1],[-1,1]],scale:[2,1,1]}).grid({divideX:20,width:5,opacity:.3})}),[]),null};export{n as Mathbox};
-//# sourceMappingURL=index.js.map

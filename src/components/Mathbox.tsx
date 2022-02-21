@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Color } from "three/src/math/Color";
-import * as MB from 'mathbox'
+import * as MB from "mathbox";
 
 type Props = {
-  element: HTMLElement
-}
+  element: HTMLElement;
+};
 
 const Mathbox = (props: Props) => {
   useEffect(() => {
@@ -33,9 +33,8 @@ const Mathbox = (props: Props) => {
       width: 5,
       opacity: 0.3,
     });
+  }, [props.element]);
+  return null;
+};
 
-  }, [props.element])
-  return null
-}
-
-export default Mathbox
+export default Mathbox;

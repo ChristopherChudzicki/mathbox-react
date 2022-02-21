@@ -14,5 +14,5 @@ jobs:
           node-version: "16"
           cache: "npm"
           cache-dependency-path: package-lock.json
-      - run: npm ci --prefix server
+      - run: npm ci
       - run: npm run lint

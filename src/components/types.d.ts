@@ -1,3 +1,5 @@
+import React from "react"
+
 export type GridProps = Partial<{
   axes: number[] | string
   baseX: number
@@ -61,8 +63,31 @@ export type CartesianProps = Partial<{
   visible: boolean
 }>
 
+export type PointProps = {
+  color: string
+  opacity: number
+  points: string // I think this can be a string ID or a MathboxNode reference...
+  size: number
+  visible: number
+}
+
+export type ArrayProps = {
+  channels: number
+  data: number[][]
+  items: number
+}
+
 export type MathboxNode<T = unknown> = {
   set(props: T): MathboxNode<T>
   cartesian: (props: CartesianProps) => MathboxNode<CartesianProps>
   grid: (props: GridProps) => MathboxNode<GridProps>
 }
+
+export type WithChildren<T> = {
+  children?: React.ReactNode
+} & T
+
+export type MathboxComponent<T> = (
+  props: WithChildren<T>,
+  ref: React.Ref<MathboxNode<T> | null>
+) => React.ReactElement | null

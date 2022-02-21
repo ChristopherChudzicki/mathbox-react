@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react';
 import MathboxNodeContext from './MathboxNodeContext';
-import { GridProps, MathboxComponent } from './types'
+import { PointProps, MathboxComponent } from './types'
 import { useMathboxNode } from './hooks'
 
-const Grid: MathboxComponent<GridProps> = (props, ref) => {
-
-  const node = useMathboxNode('grid', props, ref)
+const Point: MathboxComponent<PointProps> = (props, ref) => {
+  console.log('hello from point')
+  const node = useMathboxNode('point', props, ref)
 
   return (
     <MathboxNodeContext.Provider value={node}>
@@ -14,4 +14,4 @@ const Grid: MathboxComponent<GridProps> = (props, ref) => {
   )
 }
 
-export default forwardRef(Grid)
+export default forwardRef(Point)

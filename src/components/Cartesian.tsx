@@ -1,26 +1,11 @@
-import React, { useContext, useEffect, useState, useImperativeHandle, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import MathboxNodeContext from './MathboxNodeContext';
-import { CartesianProps, MathboxNode } from './types'
+import { CartesianProps, MathboxComponent } from './types'
+import { useMathboxNode } from './hooks'
 
-type Props = {
-  children?: React.ReactNode
-} & CartesianProps
+const Cartesian: MathboxComponent<CartesianProps> = (props, ref) => {
 
-const Cartesian = (props: Props, ref: any) => {
-  const parent = useContext(MathboxNodeContext)
-  const [node, setNode] = useState<MathboxNode<CartesianProps> | null>(null)
-  useEffect(() => {
-    const { children, ...mbProps } = props
-    if (!parent) return;
-    if (!node) {
-      const thisNode = parent.cartesian(mbProps)
-      setNode(thisNode)
-    } else {
-      node.set(mbProps)
-    }
-  }, [parent, node, props])
-
-  useImperativeHandle(ref, () => ({ cartesian: 'hi' }))
+  const node = useMathboxNode('cartesian', props, ref)
 
   return (
     <MathboxNodeContext.Provider value={node}>

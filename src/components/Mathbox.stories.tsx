@@ -1,17 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Story, Meta } from '@storybook/react';
+import React, { useRef, useState, useEffect } from "react"
+import { Story, Meta } from "@storybook/react"
 
-import Mathbox from './Mathbox';
+import Mathbox from "./Mathbox"
 
 export default {
-  title: 'Mathbox',
+  title: "Mathbox",
   component: Mathbox,
-  argTypes: {
-  },
-} as Meta<typeof Mathbox>;
+  argTypes: {},
+} as Meta<typeof Mathbox>
 
 const Template: Story<React.ComponentProps<typeof Mathbox>> = () => {
-  const container = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null)
   const [_isMounted, setIsMounted] = useState(false)
   useEffect(() => {
     setIsMounted(true)
@@ -19,10 +18,9 @@ const Template: Story<React.ComponentProps<typeof Mathbox>> = () => {
   }, [])
   return (
     <div ref={container} style={{ height: 450 }}>
-      {container.current &&
-        <Mathbox element={container.current} />}
+      {container.current && <Mathbox element={container.current} />}
     </div>
   )
-};
+}
 
-export const HelloWorld = Template.bind({});
+export const HelloWorld = Template.bind({})

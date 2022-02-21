@@ -10,7 +10,9 @@
     "build": "rollup -c",
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix --max-warnings=0"
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
+    "format": "prettier src",
+    "autofix": "npm run format -- --write && npm run lint -- --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

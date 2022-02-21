@@ -4,11 +4,12 @@ import React, {
   useEffect,
   useState,
   useImperativeHandle,
+  useCallback,
 } from "react"
 import MathboxNodeContext from "./MathboxNodeContext"
 import type { MathboxNode, WithChildren } from "./types"
 
-export const useMathboxNode = <T>(
+export const useMathboxAPI = <T>(
   name: string,
   props: WithChildren<T>,
   ref: React.Ref<MathboxNode<T> | null>

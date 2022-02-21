@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react';
 import MathboxNodeContext from './MathboxNodeContext';
 import { CartesianProps, MathboxComponent } from './types'
-import { useMathboxNode } from './hooks'
+import { useMathboxAPI } from './hooks'
 
 const Cartesian: MathboxComponent<CartesianProps> = (props, ref) => {
 
-  const node = useMathboxNode('cartesian', props, ref)
+  const node = useMathboxAPI('cartesian', props, ref)
 
   return (
     <MathboxNodeContext.Provider value={node}>

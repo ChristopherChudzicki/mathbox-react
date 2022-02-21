@@ -10,15 +10,10 @@ export default {
 } as Meta<typeof Mathbox>
 
 const Template: Story<React.ComponentProps<typeof Mathbox>> = () => {
-  const container = useRef<HTMLDivElement>(null)
-  const [_isMounted, setIsMounted] = useState(false)
-  useEffect(() => {
-    setIsMounted(true)
-    return () => setIsMounted(false)
-  }, [])
+  const [container, setContainer] = useState<HTMLDivElement>()
   return (
-    <div ref={container} style={{ height: 450 }}>
-      {container.current && <Mathbox element={container.current} />}
+    <div ref={setContainer} style={{ height: 450 }}>
+      {container && <Mathbox element={container} />}
     </div>
   )
 }

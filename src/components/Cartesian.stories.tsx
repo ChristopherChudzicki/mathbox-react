@@ -21,15 +21,10 @@ export default {
 } as Meta<typeof Cartesian>
 
 const Template: Story<React.ComponentProps<typeof Cartesian>> = (args) => {
-  const container = useRef<HTMLDivElement>(null)
-  const [_isMounted, setIsMounted] = useState(false)
-  useEffect(() => {
-    setIsMounted(true)
-    return () => setIsMounted(false)
-  }, [])
+  const [container, setContainer] = useState<HTMLDivElement>()
   return (
-    <div ref={container} style={{ height: 450 }}>
-      {container.current && <Mathbox element={container.current}>
+    <div ref={setContainer} style={{ height: 450 }}>
+      {container && <Mathbox element={container}>
         <Cartesian {...args} >
           <Grid />
         </Cartesian>

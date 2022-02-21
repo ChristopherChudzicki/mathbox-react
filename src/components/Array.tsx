@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react';
 import MathboxNodeContext from './MathboxNodeContext';
 import { ArrayProps, MathboxComponent } from './types'
-import { useMathboxNode } from './hooks'
+import { useMathboxAPI } from './hooks'
 
-const Cartesian: MathboxComponent<ArrayProps> = (props, ref) => {
+const ArrayComponent: MathboxComponent<ArrayProps> = (props, ref) => {
 
-  const node = useMathboxNode('array', props, ref)
+  const node = useMathboxAPI('array', props, ref)
 
   return (
     <MathboxNodeContext.Provider value={node}>
@@ -14,4 +14,4 @@ const Cartesian: MathboxComponent<ArrayProps> = (props, ref) => {
   )
 }
 
-export default forwardRef(Cartesian)
+export default forwardRef(ArrayComponent)

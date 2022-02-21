@@ -63,19 +63,23 @@ export type CartesianProps = Partial<{
   visible: boolean
 }>
 
-export type PointProps = {
+export type PointProps = Partial<{
   color: string
   opacity: number
-  points: string // I think this can be a string ID or a MathboxNode reference...
+  /**
+   * I believe this points to the mose recent data source if not
+   * specified. Steven's docs say the default is "<".
+   */
+  points: string | MathboxNode
   size: number
   visible: number
-}
+}>
 
-export type ArrayProps = {
+export type ArrayProps = Partial<{
   channels: number
   data: number[][]
   items: number
-}
+}>
 
 export type MathboxNode<T = unknown> = {
   set(props: T): MathboxNode<T>
@@ -84,8 +88,10 @@ export type MathboxNode<T = unknown> = {
 }
 
 export type WithChildren<T> = {
-  children?: React.ReactNode
+  children?: ReactNode | undefined
 } & T
+
+type Test = React.FC
 
 export type MathboxComponent<T> = (
   props: WithChildren<T>,

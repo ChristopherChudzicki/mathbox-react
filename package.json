@@ -1,18 +1,20 @@
 {
   "name": "mathbox-react",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "React wrapper for Mathbox",
   "license": "ISC",
   "author": "Chris Chudzicki",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
+  "types": "build/esm/types",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf build && rollup -c",
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
     "format": "prettier src",
-    "autofix": "npm run format -- --write && npm run lint -- --fix"
+    "autofix": "npm run format -- --write && npm run lint -- --fix",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

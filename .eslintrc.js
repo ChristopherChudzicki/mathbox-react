@@ -31,6 +31,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
+        ignoreRestSiblings: true,
         argsIgnorePattern: "^_",
         varsIgnorePattern: "^_",
         caughtErrorsIgnorePattern: "^_",
@@ -68,4 +69,4 @@ module.exports = {
   parserOptions: {
     project: "./tsconfig.base.json",
   },
-};
+}

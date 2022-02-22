@@ -85,6 +85,7 @@ export type MathboxNode<T = unknown> = {
   set(props: T): MathboxNode<T>
   cartesian: (props: CartesianProps) => MathboxNode<CartesianProps>
   grid: (props: GridProps) => MathboxNode<GridProps>
+  remove: () => void
 }
 
 export type WithChildren<T> = {

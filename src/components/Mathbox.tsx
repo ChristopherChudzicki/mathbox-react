@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { Color } from "three/src/math/Color"
-import * as MB from 'mathbox'
-import MathboxNodeContext from './MathboxNodeContext'
+import * as MB from "mathbox"
+import MathboxNodeContext from "./MathboxNodeContext"
 
 type Props = {
   element: HTMLElement
@@ -23,7 +23,6 @@ const Mathbox = (props: Props) => {
 
     mathbox.three.camera.position.set(1, 1, 2)
     mathbox.three.renderer.setClearColor(new Color(0xffffff), 1.0)
-
   }, [props.element])
   return (
     <MathboxNodeContext.Provider value={node}>

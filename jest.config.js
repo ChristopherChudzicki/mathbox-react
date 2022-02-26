@@ -8,4 +8,5 @@ module.exports = {
     "node_modules/(?!(mathbox|@sicmutils/threestrap|three|shadergraph)/)",
   ],
   testEnvironment: "jsdom",
+  setupFiles: ["./src/testSetup.ts"],
 }

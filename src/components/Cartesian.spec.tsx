@@ -1,12 +1,10 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import { getMockContext } from "./test_utils"
 import Mathbox from "./Mathbox"
 import Cartesian from "./Cartesian"
 import Grid from "./Grid"
 import { MathboxNodeAPI } from "./types"
 
-HTMLCanvasElement.prototype.getContext = getMockContext
 
 describe("Cartesian", () => {
   it("exposes Mathbox instance via ref", () => {

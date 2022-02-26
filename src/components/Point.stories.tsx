@@ -6,7 +6,7 @@ import Cartesian from "./Cartesian"
 import Grid from "./Grid"
 import Point from "./Point"
 import MBArray from "./Array"
-import type { MathboxNode } from "./types"
+import type { MathboxNodeAPI } from "./types"
 
 export default {
   title: "Point",
@@ -33,7 +33,7 @@ export default {
 
 const Template: Story<React.ComponentProps<typeof Point>> = (args) => {
   const { points, ...otherArgs } = args
-  const [data, setData] = useState<MathboxNode>()
+  const [data, setData] = useState<MathboxNodeAPI>()
   return (
     <Mathbox style={{ height: 450 }}>
       <Cartesian

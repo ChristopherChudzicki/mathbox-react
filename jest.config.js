@@ -7,4 +7,5 @@ module.exports = {
   transformIgnorePatterns: [
     "node_modules/(?!(mathbox|@sicmutils/threestrap|three|shadergraph)/)",
   ],
+  testEnvironment: "jsdom",
 }

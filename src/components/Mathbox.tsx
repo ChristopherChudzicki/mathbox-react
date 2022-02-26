@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { Color } from "three/src/math/Color"
+import { Color } from "three"
 import * as MB from "mathbox"
 import MathboxNodeContext from "./MathboxNodeContext"
 

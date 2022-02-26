@@ -33,43 +33,38 @@ export default {
 
 const Template: Story<React.ComponentProps<typeof Point>> = (args) => {
   const { points, ...otherArgs } = args
-  const [container, setContainer] = useState<HTMLDivElement>()
   const [data, setData] = useState<MathboxNode>()
   return (
-    <div ref={setContainer} style={{ height: 450 }}>
-      {container && (
-        <Mathbox element={container}>
-          <Cartesian
-            range={[
-              [-5, 5],
-              [-5, 5],
-              [-5, 5],
-            ]}
-          >
-            <Grid axes="xy" />
-            <Grid axes="xz" />
-            <MBArray
-              ref={setData}
-              items={1}
-              channels={3}
-              data={[
-                [1, 1, 2],
-                [1, 1, 3],
-              ]}
-            />
-            <MBArray
-              items={1}
-              channels={3}
-              data={[
-                [1, 1, -2],
-                [1, 1, -3],
-              ]}
-            />
-            <Point points={data} {...otherArgs} />
-          </Cartesian>
-        </Mathbox>
-      )}
-    </div>
+    <Mathbox style={{ height: 450 }}>
+      <Cartesian
+        range={[
+          [-5, 5],
+          [-5, 5],
+          [-5, 5],
+        ]}
+      >
+        <Grid axes="xy" />
+        <Grid axes="xz" />
+        <MBArray
+          ref={setData}
+          items={1}
+          channels={3}
+          data={[
+            [1, 1, 2],
+            [1, 1, 3],
+          ]}
+        />
+        <MBArray
+          items={1}
+          channels={3}
+          data={[
+            [1, 1, -2],
+            [1, 1, -3],
+          ]}
+        />
+        <Point points={data} {...otherArgs} />
+      </Cartesian>
+    </Mathbox>
   )
 }
 

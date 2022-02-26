@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Story, Meta } from "@storybook/react"
 
 import Mathbox from "./Mathbox"
@@ -19,18 +19,11 @@ export default {
   },
 } as Meta<typeof Grid>
 
-const Template: Story<React.ComponentProps<typeof Grid>> = (args) => {
-  const [container, setContainer] = useState<HTMLDivElement>()
-  return (
-    <div ref={setContainer} style={{ height: 450 }}>
-      {container && (
-        <Mathbox element={container}>
-          <Grid {...args} />
-        </Mathbox>
-      )}
-    </div>
-  )
-}
+const Template: Story<React.ComponentProps<typeof Grid>> = (args) => (
+  <Mathbox style={{ height: 450 }} >
+    <Grid {...args} />
+  </Mathbox>
+)
 
 export const DefaultGrid = Template.bind({})
 DefaultGrid.args = {}

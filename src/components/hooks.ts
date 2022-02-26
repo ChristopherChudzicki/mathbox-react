@@ -4,42 +4,42 @@ import React, {
   useState,
   useImperativeHandle,
 } from "react"
-import MathboxNodeContext from "./MathboxNodeContext"
-import type { MathboxNode, WithChildren } from "./types"
+import MathboxAPIContext from "./MathboxNodeContext"
+import type { MathboxNodeAPI, WithChildren } from "./types"
 
 export const useMathboxAPI = <T>(
   name: string,
   props: WithChildren<T>,
-  ref: React.Ref<MathboxNode<T> | null>
+  ref: React.Ref<MathboxNodeAPI<T> | null>
 ) => {
-  const parent = useContext(MathboxNodeContext)
-  const [node, setNode] = useState<MathboxNode<T> | null>(null)
+  const parent = useContext(MathboxAPIContext)
+  const [nodeAPI, setNodeAPI] = useState<MathboxNodeAPI<T> | null>(null)
 
   useEffect(
     () => () => {
-      if (node) {
-        node.remove()
+      if (nodeAPI) {
+        nodeAPI.remove()
       }
     },
-    [node]
+    [nodeAPI]
   )
 
   useEffect(() => {
     const { children, ...mbProps } = props
     if (!parent) return
-    if (!node) {
+    if (!nodeAPI) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const thisNode = parent[name](mbProps)
-      setNode(thisNode)
+      setNodeAPI(thisNode)
     } else {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      node.set(mbProps)
+      nodeAPI.set(mbProps)
     }
-  }, [parent, node, props, name])
+  }, [parent, nodeAPI, props, name])
 
-  useImperativeHandle(ref, () => node)
+  useImperativeHandle(ref, () => nodeAPI)
 
-  return node
+  return nodeAPI
 }

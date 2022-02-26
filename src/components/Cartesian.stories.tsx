@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Story, Meta } from "@storybook/react"
 
 import Mathbox from "./Mathbox"
@@ -25,20 +25,13 @@ export default {
   },
 } as Meta<typeof Cartesian>
 
-const Template: Story<React.ComponentProps<typeof Cartesian>> = (args) => {
-  const [container, setContainer] = useState<HTMLDivElement>()
-  return (
-    <div ref={setContainer} style={{ height: 450 }}>
-      {container && (
-        <Mathbox element={container}>
-          <Cartesian {...args}>
-            <Grid />
-          </Cartesian>
-        </Mathbox>
-      )}
-    </div>
-  )
-}
+const Template: Story<React.ComponentProps<typeof Cartesian>> = (args) => (
+  <Mathbox style={{ height: 450 }}>
+    <Cartesian {...args}>
+      <Grid />
+    </Cartesian>
+  </Mathbox>
+)
 
 export const DefaultCartesian = Template.bind({})
 DefaultCartesian.args = {}

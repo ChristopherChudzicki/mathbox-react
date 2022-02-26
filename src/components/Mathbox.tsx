@@ -1,34 +1,45 @@
-import React, { useEffect, useState } from "react"
+import React, {
+  useEffect,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from "react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { Color } from "three/src/math/Color"
+import { Color } from "three"
 import * as MB from "mathbox"
-import MathboxNodeContext from "./MathboxNodeContext"
+import MathboxAPIContext from "./MathboxNodeContext"
+import { MathboxNodeAPI } from "./types"
 
 type Props = {
-  element: HTMLElement
   children?: React.ReactNode
-}
+} & React.HTMLProps<HTMLDivElement>
 
-const Mathbox = (props: Props) => {
-  const [node, setNode] = useState(null)
+const Mathbox = (props: Props, ref: React.Ref<MathboxNodeAPI | null>) => {
+  const { children, ...divProps } = props
+  const [nodeAPI, setNodeAPI] = useState(null)
+  const [container, setContainer] = useState<HTMLDivElement | null>(null)
   useEffect(() => {
+    if (!container) return
     const mathbox = MB.mathBox({
       plugins: ["core", "controls", "cursor"],
       controls: {
         klass: OrbitControls,
       },
-      element: props.element,
+      element: container,
     })
-    setNode(mathbox)
+    setNodeAPI(mathbox)
 
     mathbox.three.camera.position.set(1, 1, 2)
     mathbox.three.renderer.setClearColor(new Color(0xffffff), 1.0)
-  }, [props.element])
+  }, [container])
+  useImperativeHandle(ref, () => nodeAPI)
   return (
-    <MathboxNodeContext.Provider value={node}>
-      {props.children}
-    </MathboxNodeContext.Provider>
+    <div ref={setContainer} {...divProps}>
+      <MathboxAPIContext.Provider value={nodeAPI}>
+        {children}
+      </MathboxAPIContext.Provider>
+    </div>
   )
 }
 
-export default Mathbox
+export default forwardRef(Mathbox)

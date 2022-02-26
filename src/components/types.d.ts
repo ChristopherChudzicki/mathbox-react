@@ -70,7 +70,7 @@ export type PointProps = Partial<{
    * I believe this points to the mose recent data source if not
    * specified. Steven's docs say the default is "<".
    */
-  points: string | MathboxNode
+  points: string | MathboxNodeAPI
   size: number
   visible: number
 }>
@@ -81,11 +81,19 @@ export type ArrayProps = Partial<{
   items: number
 }>
 
-export type MathboxNode<T = unknown> = {
-  set(props: T): MathboxNode<T>
-  cartesian: (props: CartesianProps) => MathboxNode<CartesianProps>
-  grid: (props: GridProps) => MathboxNode<GridProps>
+export interface MathboxNode {
+  type: string
+}
+
+export interface MathboxNodeAPI<T = unknown> {
+  set(props: T): MathboxNodeAPI<T>
+  cartesian: (props: CartesianProps) => MathboxNodeAPI<CartesianProps>
+  grid: (props: GridProps) => MathboxNodeAPI<GridProps>
   remove: () => void
+  print: () => MathboxNodeAPI<T>
+  select: (query: string) => MathboxNodeAPI
+  [index: number]: MathboxNode<T>
+  length: number
 }
 
 export type WithChildren<T> = {
@@ -96,5 +104,5 @@ type Test = React.FC
 
 export type MathboxComponent<T> = (
   props: WithChildren<T>,
-  ref: React.Ref<MathboxNode<T> | null>
+  ref: React.Ref<MathboxNodeAPI<T> | null>
 ) => React.ReactElement | null

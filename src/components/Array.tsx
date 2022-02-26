@@ -1,15 +1,15 @@
 import React, { forwardRef } from "react"
-import MathboxNodeContext from "./MathboxNodeContext"
+import MathboxAPIContext from "./MathboxNodeContext"
 import { ArrayProps, MathboxComponent } from "./types"
 import { useMathboxAPI } from "./hooks"
 
 const ArrayComponent: MathboxComponent<ArrayProps> = (props, ref) => {
-  const node = useMathboxAPI("array", props, ref)
+  const nodeAPI = useMathboxAPI("array", props, ref)
 
   return (
-    <MathboxNodeContext.Provider value={node}>
+    <MathboxAPIContext.Provider value={nodeAPI}>
       {props.children}
-    </MathboxNodeContext.Provider>
+    </MathboxAPIContext.Provider>
   )
 }
 

@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  linting:
+  linting_and_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,3 +17,4 @@ jobs:
       - run: npm ci
       - run: npm run format
       - run: npm run lint
+      - run: npm run test

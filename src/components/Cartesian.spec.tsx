@@ -1,7 +1,7 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import Mathbox from "./Mathbox"
-import Cartesian from "./Cartesian"
+import { Cartesian } from "./components"
 import Grid from "./Grid"
 import { MathboxRef } from "./types"
 

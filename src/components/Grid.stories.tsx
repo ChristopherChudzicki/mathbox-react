@@ -2,7 +2,7 @@ import React from "react"
 import { Story, Meta } from "@storybook/react"
 
 import Mathbox from "./Mathbox"
-import Grid from "./Grid"
+import { Grid } from "./components"
 
 export default {
   title: "Grid",

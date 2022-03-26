@@ -2,8 +2,7 @@ import React from "react"
 import { Story, Meta } from "@storybook/react"
 
 import Mathbox from "./Mathbox"
-import Cartesian from "./Cartesian"
-import Grid from "./Grid"
+import { Cartesian, Grid } from './components'
 
 export default {
   title: "Cartesian",

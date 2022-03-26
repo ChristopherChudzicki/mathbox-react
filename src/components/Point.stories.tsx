@@ -2,11 +2,12 @@ import React, { useState } from "react"
 import { Story, Meta } from "@storybook/react"
 
 import Mathbox from "./Mathbox"
-import Cartesian from "./Cartesian"
-import Grid from "./Grid"
-import Point from "./Point"
-import MBArray from "./Array"
-import type { MathboxNodeAPI } from "./types"
+import {
+  Cartesian,
+  Grid,
+  Point,
+  Array as MBArray
+} from './components'
 
 export default {
   title: "Point",

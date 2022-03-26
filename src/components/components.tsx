@@ -2,15 +2,15 @@ import React, { forwardRef } from "react"
 import { Props, NodeType, MathboxSelection } from 'mathbox'
 import MathboxAPIContext from "./MathboxNodeContext"
 import { useMathboxAPI } from "./hooks"
+import { WithChildren } from './types'
 
-type WithChildren = { children?: React.ReactNode | React.ReactNode[] }
 type MathboxComponent<T extends NodeType> = React.ForwardRefExoticComponent<
-  Props[T] & WithChildren & React.RefAttributes<MathboxSelection<T>>
+  WithChildren<Props[T]> & React.RefAttributes<MathboxSelection<T>>
 >
 
 const mathboxComponentFactory = <T extends NodeType>(type: T): MathboxComponent<T> => {
   const Comp = (
-    props: Props[T] & WithChildren,
+    props: WithChildren<Props[T]>,
     ref: React.Ref<MathboxSelection<T> | null>
   ) => {
     const nodeAPI = useMathboxAPI(type, props, ref)
@@ -228,11 +228,6 @@ export const Retext = mathboxComponentFactory('retext');
  * Component wrapper for mathbox [`reveal`](https://gitgud.io/unconed/mathbox/-/blob/master/docs/primitives.md#presentreveal).
  */
 export const Reveal = mathboxComponentFactory('reveal');
-
-/**
- * Component wrapper for mathbox [`root`](https://gitgud.io/unconed/mathbox/-/blob/master/docs/primitives.md#baseroot).
- */
-export const Root = mathboxComponentFactory('root');
 
 /**
  * Component wrapper for mathbox [`rtt`](https://gitgud.io/unconed/mathbox/-/blob/master/docs/primitives.md#rttrtt).

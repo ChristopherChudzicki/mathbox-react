@@ -34,8 +34,13 @@ export const useMathboxAPI = <T extends NodeType>(
       const thisNode: MathboxSelection<T> = parent[name](mbProps)
       setSelection(thisNode)
     } else {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      /**
+       * Set all the props anew. It's MathBox's responsibility to diff out the
+       * unchanged props if it wants to do that optimization.
+       *
+       * (In fact, Mathbox delegates that optimization to Threestrap through
+       * some rather byzantine inheritance.)
+       */
       selection.set(mbProps)
     }
   }, [parent, selection, setSelection, props, name])

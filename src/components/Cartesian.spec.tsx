@@ -3,13 +3,18 @@ import { render } from "@testing-library/react"
 import Mathbox from "./Mathbox"
 import Cartesian from "./Cartesian"
 import Grid from "./Grid"
-import { MathboxNodeAPI } from "./types"
+import { MathboxRef } from "./types"
 
+function assertNotUndefined<T>(value: T | undefined): asserts value is T {
+  if (value === undefined) {
+    throw new Error("Unexpected undefined value")
+  }
+}
 
 describe("Cartesian", () => {
   it("exposes Mathbox instance via ref", () => {
-    const mbRef: React.Ref<MathboxNodeAPI> = { current: null }
-    const cartesianRef: React.Ref<MathboxNodeAPI> = { current: null }
+    const mbRef: MathboxRef<'root'> = { current: null }
+    const cartesianRef: MathboxRef<'cartesian'> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian ref={cartesianRef} />
@@ -21,7 +26,7 @@ describe("Cartesian", () => {
   })
 
   it("creates a cartesian instance as child of root", () => {
-    const mbRef: React.Ref<MathboxNodeAPI> = { current: null }
+    const mbRef: MathboxRef<'root'> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian />
@@ -31,7 +36,7 @@ describe("Cartesian", () => {
   })
 
   it("creates mathbox children as children of itself", () => {
-    const mbRef: React.Ref<MathboxNodeAPI> = { current: null }
+    const mbRef: MathboxRef<'root'> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian>
@@ -46,7 +51,7 @@ describe("Cartesian", () => {
   })
 
   it("removes its mathbox instance when unmounted", () => {
-    const mbRef: React.Ref<MathboxNodeAPI> = { current: null }
+    const mbRef: MathboxRef<'root'> = { current: null }
     const { rerender } = render(
       <Mathbox ref={mbRef}>
         <Cartesian />
@@ -61,33 +66,37 @@ describe("Cartesian", () => {
     { props: { visible: true, scale: [3, 2, 1] } },
     { props: { visible: false, scale: [1, 2, 3] } },
   ])("passes appropriate props to its mathbox instance", ({ props }) => {
-    const mbRef: React.Ref<MathboxNodeAPI> = { current: null }
+    const mbRef: MathboxRef<'root'> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian {...props} />
       </Mathbox>
     )
-    const cartesian = mbRef.current?.select("cartesian")[0]
+    const cartesian = mbRef.current?.select<"cartesian">("cartesian")
 
-    expect(cartesian.props.visible).toBe(props.visible)
+    assertNotUndefined(cartesian)
+
+    expect(cartesian.get("visible")).toBe(props.visible)
     // Mathbox converts scale to a ThreeJS Vec3
-    expect(cartesian.props.scale.toArray()).toStrictEqual(props.scale)
+    expect(cartesian.get("scale").toArray()).toStrictEqual(props.scale)
   })
 
   it("updates props on its mathbox instance when rerendered", () => {
-    const mbRef: React.Ref<MathboxNodeAPI> = { current: null }
+    const mbRef: MathboxRef<'root'> = { current: null }
     const { rerender } = render(
       <Mathbox ref={mbRef}>
         <Cartesian />
       </Mathbox>
     )
-    const cartesian = mbRef.current?.select("cartesian")[0]
-    expect(cartesian.props.visible).toBe(true)
+    const cartesian = mbRef.current?.select<"cartesian">("cartesian")
+    assertNotUndefined(cartesian)
+
+    expect(cartesian.get("visible")).toBe(true)
     rerender(
       <Mathbox ref={mbRef}>
         <Cartesian visible={false} />
       </Mathbox>
     )
-    expect(cartesian.props.visible).toBe(false)
+    expect(cartesian.get("visible")).toBe(false)
   })
 })

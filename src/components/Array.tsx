@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react"
 import MathboxAPIContext from "./MathboxNodeContext"
-import { ArrayProps, MathboxComponent } from "./types"
+import { MathboxComponent } from "./types"
 import { useMathboxAPI } from "./hooks"
 
-const ArrayComponent: MathboxComponent<ArrayProps> = (props, ref) => {
+const ArrayComponent: MathboxComponent<"array"> = (props, ref) => {
   const nodeAPI = useMathboxAPI("array", props, ref)
 
   return (

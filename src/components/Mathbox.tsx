@@ -21,16 +21,10 @@ const Mathbox = (props: Props, ref: React.Ref<MathboxSelection<'root'> | null>) 
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   useEffect(() => {
     if (!container) return () => { }
-    /**
-     * TODO:
-     */
+
     const mathbox = mathBox({
-      plugins: ["core", "controls", "cursor"],
-      controls: {
-        klass: OrbitControls,
-      },
+      ...mathboxOptions,
       element: container,
-      ...mathboxOptions
     })
     setSelection(mathbox)
 

@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { Story, Meta } from "@storybook/react"
 
-import Mathbox from "./Mathbox"
+import { CustomMathbox as Mathbox } from "./utils"
 import {
   Cartesian,
   Grid,
   Point,
   Array as MBArray
-} from './components'
+} from '../components'
 
 export default {
   title: "Point",

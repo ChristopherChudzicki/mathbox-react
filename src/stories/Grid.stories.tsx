@@ -1,8 +1,8 @@
 import React from "react"
 import { Story, Meta } from "@storybook/react"
 
-import Mathbox from "./Mathbox"
-import { Grid } from "./components"
+import { CustomMathbox as Mathbox } from "./utils"
+import { Grid } from "../components"
 
 export default {
   title: "Grid",
@@ -20,7 +20,7 @@ export default {
 } as Meta<typeof Grid>
 
 const Template: Story<React.ComponentProps<typeof Grid>> = (args) => (
-  <Mathbox style={{ height: 450 }}>
+  <Mathbox style={{ height: 450 }} >
     <Grid {...args} />
   </Mathbox>
 )

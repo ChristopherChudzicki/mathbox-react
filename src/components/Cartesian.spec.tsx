@@ -1,8 +1,7 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import Mathbox from "./Mathbox"
-import { Cartesian } from "./components"
-import Grid from "./Grid"
+import { Cartesian, Grid } from "./components"
 import { MathboxRef } from "./types"
 
 function assertNotUndefined<T>(value: T | undefined): asserts value is T {

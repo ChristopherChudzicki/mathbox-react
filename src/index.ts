@@ -1,3 +1,1 @@
-import Mathbox from "./components/Mathbox"
-
-export { Mathbox }
+export * from "./components"

@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import * as MB from 'mathbox-react'
+
 import "mathbox/mathbox.css";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import Form, { AreaEmitter, expr1 } from './Form'
 
 const mathboxOptions = {
   plugins: ["core", "controls", "cursor"],
@@ -11,31 +13,42 @@ const mathboxOptions = {
 }
 const initialCameraPosition = [1, 1, 2]
 
-const expr = (emit: any, x: number, y: number, i: number, j: number, time: number) => {
-  emit(x, 0.25 + 0.25 * (Math.sin(x + time) * Math.sin(y + time)), y);
-};
 
-const Points = () => {
+type PointsProps = {
+  size: number;
+  width: number;
+  height: number;
+  expr: AreaEmitter;
+}
+
+const Points = (props: PointsProps) => {
   return (
     <>
-      <MB.Area id="sampler" width={32} height={32} axes="xz" expr={expr} />
-      <MB.Point points="#sampler" color={0x3090ff} size={20}></MB.Point>
+      <MB.Area id="sampler" width={props.width} height={props.height} axes="xz" expr={props.expr} />
+      <MB.Point points="#sampler" color={0x3090ff} size={props.size}></MB.Point>
       <MB.Transform position={[0, 0.5, 0]}>
-        <MB.Point points="#sampler" shape='diamond' color="green" size={20}></MB.Point>
+        <MB.Point points="#sampler" shape='diamond' color="green" size={props.size}></MB.Point>
       </MB.Transform>
     </>
   )
 }
 
 function App() {
-  const ref = useRef<any>();
+  const [width, setWidth] = useState(32);
+  const [height, setHeight] = useState(32);
+  const [size, setSize] = useState(16);
+  const [expr, setExpr] = useState<AreaEmitter>(() => expr1)
+  console.log(expr)
   return (
-    <MB.Mathbox ref={ref} options={mathboxOptions} className='h-100' initialCameraPosition={initialCameraPosition}>
-      <MB.Cartesian >
-        <MB.Grid axes="xz" />
-        <Points />
-      </MB.Cartesian>
-    </MB.Mathbox>
+    <>
+      <Form width={width} setWidth={setWidth} height={height} setHeight={setHeight} size={size} setSize={setSize} expr={expr} setExpr={setExpr} />
+      <MB.Mathbox options={mathboxOptions} className='h-100' initialCameraPosition={initialCameraPosition}>
+        <MB.Cartesian>
+          <MB.Grid axes="xz" />
+          <Points width={width} height={height} size={size} expr={expr} />
+        </MB.Cartesian>
+      </MB.Mathbox>
+    </>
   );
 }
 

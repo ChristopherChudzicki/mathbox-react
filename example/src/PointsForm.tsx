@@ -20,7 +20,7 @@ const exprOptions = [
 ]
 
 
-type FormProps = {
+type Props = {
   size: number
   setSize: (value: number) => void
   width: number
@@ -31,7 +31,7 @@ type FormProps = {
   setExpr: (value: AreaEmitter) => void
 }
 
-const Form = (props: FormProps) => {
+const SomePointsForm = (props: Props) => {
   const { setExpr } = props
   const setExprFromOption = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     const opt = exprOptions.find(opt => opt.id === e.target.value)
@@ -60,4 +60,4 @@ const Form = (props: FormProps) => {
   )
 }
 
-export default Form
+export default SomePointsForm

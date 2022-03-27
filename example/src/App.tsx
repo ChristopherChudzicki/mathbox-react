@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import * as MB from 'mathbox-react'
-
-import "mathbox/mathbox.css";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import Form, { AreaEmitter, expr1 } from './Form'
+import PointsForm, { AreaEmitter, expr1 } from './PointsForm'
+import Points from './Points'
 
 const mathboxOptions = {
   plugins: ["core", "controls", "cursor"],
@@ -14,34 +13,39 @@ const mathboxOptions = {
 const initialCameraPosition = [1, 1, 2]
 
 
-type PointsProps = {
-  size: number;
-  width: number;
-  height: number;
-  expr: AreaEmitter;
-}
-
-const Points = (props: PointsProps) => {
-  return (
-    <>
-      <MB.Area id="sampler" width={props.width} height={props.height} axes="xz" expr={props.expr} />
-      <MB.Point points="#sampler" color={0x3090ff} size={props.size}></MB.Point>
-      <MB.Transform position={[0, 0.5, 0]}>
-        <MB.Point points="#sampler" shape='diamond' color="green" size={props.size}></MB.Point>
-      </MB.Transform>
-    </>
-  )
-}
-
 function App() {
   const [width, setWidth] = useState(32);
   const [height, setHeight] = useState(32);
   const [size, setSize] = useState(16);
   const [expr, setExpr] = useState<AreaEmitter>(() => expr1)
-  console.log(expr)
   return (
     <>
-      <Form width={width} setWidth={setWidth} height={height} setHeight={setHeight} size={size} setSize={setSize} expr={expr} setExpr={setExpr} />
+      {
+        /**
+         * Changes from PointsForm will cause this whole component to re-
+         * render, when really only Points needs to update.
+         * 
+         * It probably is not necessary for all Mathbox components to be
+         * children of MB.Mathbox. It should be possibly to
+         *  1. store a ref from Cartesian
+         *  2. pass that ref to a separate component, "PointsContainer" that is
+         *     NOT a child of  MB.Mathbox
+         *  3. Inside PointsContainer...
+         *     <PointsContainer>
+         *        <PointsForm />
+         *        <MathboxAPIContext.Provider value={refToMathboxParent}>
+         *          <Points />
+         *        </MathboxAPIContext.Provider>
+         *     </PointsContainer>
+         * 
+         *    Where the Provider is given a ref to the mathbox parent node, in
+         *    this case the Cartesian node.
+         * 
+         *  TODO: Test this and expose MathboxAPIContext. Probably also rename
+         *  it to MathboxContext
+         */
+      }
+      <PointsForm width={width} setWidth={setWidth} height={height} setHeight={setHeight} size={size} setSize={setSize} expr={expr} setExpr={setExpr} />
       <MB.Mathbox options={mathboxOptions} className='h-100' initialCameraPosition={initialCameraPosition}>
         <MB.Cartesian>
           <MB.Grid axes="xz" />

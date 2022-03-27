@@ -14,7 +14,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
     "format": "prettier src",
     "autofix": "npm run format -- --write && npm run lint -- --fix",
-    "prepublishOnly": "npm run build",
+    "prepack": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
@@ -57,6 +57,6 @@
   "peerDependencies": {
     "mathbox": "^2.1.2",
     "react": "^17.0.2",
-    "three": "^0.137.5"
+    "three": ">=0.118.0"
   }
 }

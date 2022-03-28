@@ -1,7 +1,7 @@
 import React from "react"
 import { Story, Meta } from "@storybook/react"
 
-import Mathbox from "./Mathbox"
+import Mathbox from "../components/Mathbox"
 
 export default {
   title: "Mathbox",

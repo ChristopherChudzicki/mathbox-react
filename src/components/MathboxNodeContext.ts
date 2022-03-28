@@ -1,6 +1,6 @@
 import { createContext } from "react"
-import { MathboxNodeAPI } from "./types"
+import { MathboxSelection, NodeType } from "mathbox"
 
-const MathboxAPIContext = createContext<MathboxNodeAPI | null>(null)
+const MathboxAPIContext = createContext<MathboxSelection<NodeType> | null>(null)
 
 export default MathboxAPIContext

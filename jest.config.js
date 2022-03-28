@@ -5,7 +5,7 @@ module.exports = {
     "^.+\\.(js|jsx)$": "babel-jest",
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(mathbox|@sicmutils/threestrap|three|shadergraph)/)",
+    "node_modules/(?!(mathbox|threestrap|three|shadergraph)/)",
   ],
   testEnvironment: "jsdom",
   setupFiles: ["./src/testSetup.ts"],

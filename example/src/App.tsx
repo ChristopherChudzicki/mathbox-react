@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { AreaEmitter } from 'mathbox'
 import * as MB from 'mathbox-react'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import PointsForm, { AreaEmitter, expr1 } from './PointsForm'
+import PointsForm, { expr1 } from './PointsForm'
 import Points from './Points'
 
 const mathboxOptions = {

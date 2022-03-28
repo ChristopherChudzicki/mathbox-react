@@ -1,6 +1,6 @@
 import React from 'react';
 import * as MB from 'mathbox-react'
-import type { AreaEmitter } from './PointsForm'
+import type { AreaEmitter } from 'mathbox'
 
 type Props = {
   size: number;

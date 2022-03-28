@@ -1,16 +1,14 @@
 import React, { useCallback } from 'react';
+import type { AreaEmitter } from 'mathbox'
 import './form.css'
-
-// TODO: Move this type to mathbox
-export type AreaEmitter = (emit: any, x: number, y: number, i: number, j: number, time: number) => void
 
 export const expr1: AreaEmitter = (emit, x, y, i, j, t) => {
   emit(x, 0.25 + 0.25 * (Math.sin(x + t) * Math.sin(y + t)), y);
 };
 
 export const expr2: AreaEmitter = (emit, x, y, i, j, t) => {
-  const r = Math.hypot(x, y);
-  const val = 0.25 * Math.exp(-(r ** 2)) * Math.sin(Math.PI * (r + t / 2))
+  const r = Math.sqrt(x ** 2 + y ** 2)
+  const val = 0.2 * Math.exp(-(r ** 2)) * Math.sin(2 * Math.PI * r + 1.5 * t)
   emit(x, val, y);
 };
 

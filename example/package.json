@@ -5,8 +5,8 @@
   "dependencies": {
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
-    "mathbox": "git+https://gitgud.io/cchudzicki/mathbox.git#cc/2.1.2",
-    "mathbox-react": "file:../mathbox-react-0.0.4.tgz",
+    "mathbox": "2.1.2-dev",
+    "mathbox-react": "0.0.5-dev",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",

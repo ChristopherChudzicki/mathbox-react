@@ -1,13 +1,8 @@
 import React, { useState } from "react"
 import { Story, Meta } from "@storybook/react"
-import { MathboxSelection } from 'mathbox'
+import { MathboxSelection } from "mathbox"
 import { CustomMathbox as Mathbox } from "./utils"
-import {
-  Cartesian,
-  Grid,
-  Point,
-  Array as MBArray
-} from '../components'
+import { Cartesian, Grid, Point, Array as MBArray } from "../components"
 
 export default {
   title: "Point",
@@ -34,7 +29,7 @@ export default {
 
 const Template: Story<React.ComponentProps<typeof Point>> = (args) => {
   const { points, ...otherArgs } = args
-  const [data, setData] = useState<MathboxSelection<'array'>>()
+  const [data, setData] = useState<MathboxSelection<"array">>()
   return (
     <Mathbox style={{ height: 450 }}>
       <Cartesian

@@ -3,25 +3,29 @@ import React, {
   useState,
   forwardRef,
   useImperativeHandle,
-  useMemo
+  useMemo,
 } from "react"
 import { Color } from "three"
 import { mathBox, MathboxSelection, MathBoxOptions } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
 
-
 type Props = {
-  options?: MathBoxOptions,
+  options?: MathBoxOptions
   initialCameraPosition?: number[]
-} & React.HTMLProps<HTMLDivElement>;
+} & React.HTMLProps<HTMLDivElement>
 
-const Mathbox = (props: Props, ref: React.Ref<MathboxSelection<'root'> | null>) => {
+const Mathbox = (
+  props: Props,
+  ref: React.Ref<MathboxSelection<"root"> | null>
+) => {
   const { children, initialCameraPosition, options, ...divProps } = props
   const mathboxOptions = useMemo(() => options ?? {}, [options])
-  const [selection, setSelection] = useState<MathboxSelection<'root'> | null>(null)
+  const [selection, setSelection] = useState<MathboxSelection<"root"> | null>(
+    null
+  )
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   useEffect(() => {
-    if (!container) return () => { }
+    if (!container) return () => {}
 
     const mathbox = mathBox({
       ...mathboxOptions,
@@ -37,8 +41,8 @@ const Mathbox = (props: Props, ref: React.Ref<MathboxSelection<'root'> | null>) 
       mathbox.three.camera.position.set(...initialCameraPosition)
     }
     return () => {
-      mathbox.select('*').remove();
-      mathbox.three.destroy();
+      mathbox.select("*").remove()
+      mathbox.three.destroy()
     }
   }, [container, mathboxOptions, initialCameraPosition])
   useImperativeHandle(ref, () => selection)

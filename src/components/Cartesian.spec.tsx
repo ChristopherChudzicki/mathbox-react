@@ -12,8 +12,8 @@ function assertNotUndefined<T>(value: T | undefined): asserts value is T {
 
 describe("Cartesian", () => {
   it("exposes Mathbox instance via ref", () => {
-    const mbRef: MathboxRef<'root'> = { current: null }
-    const cartesianRef: MathboxRef<'cartesian'> = { current: null }
+    const mbRef: MathboxRef<"root"> = { current: null }
+    const cartesianRef: MathboxRef<"cartesian"> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian ref={cartesianRef} />
@@ -25,7 +25,7 @@ describe("Cartesian", () => {
   })
 
   it("creates a cartesian instance as child of root", () => {
-    const mbRef: MathboxRef<'root'> = { current: null }
+    const mbRef: MathboxRef<"root"> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian />
@@ -35,7 +35,7 @@ describe("Cartesian", () => {
   })
 
   it("creates mathbox children as children of itself", () => {
-    const mbRef: MathboxRef<'root'> = { current: null }
+    const mbRef: MathboxRef<"root"> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian>
@@ -50,7 +50,7 @@ describe("Cartesian", () => {
   })
 
   it("removes its mathbox instance when unmounted", () => {
-    const mbRef: MathboxRef<'root'> = { current: null }
+    const mbRef: MathboxRef<"root"> = { current: null }
     const { rerender } = render(
       <Mathbox ref={mbRef}>
         <Cartesian />
@@ -65,7 +65,7 @@ describe("Cartesian", () => {
     { props: { visible: true, scale: [3, 2, 1] } },
     { props: { visible: false, scale: [1, 2, 3] } },
   ])("passes appropriate props to its mathbox instance", ({ props }) => {
-    const mbRef: MathboxRef<'root'> = { current: null }
+    const mbRef: MathboxRef<"root"> = { current: null }
     render(
       <Mathbox ref={mbRef}>
         <Cartesian {...props} />
@@ -81,7 +81,7 @@ describe("Cartesian", () => {
   })
 
   it("updates props on its mathbox instance when rerendered", () => {
-    const mbRef: MathboxRef<'root'> = { current: null }
+    const mbRef: MathboxRef<"root"> = { current: null }
     const { rerender } = render(
       <Mathbox ref={mbRef}>
         <Cartesian />

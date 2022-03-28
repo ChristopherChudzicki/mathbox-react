@@ -1,6 +1,6 @@
-import React, { forwardRef, useMemo } from 'react'
+import React, { forwardRef, useMemo } from "react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { Mathbox } from '../components'
+import { Mathbox } from "../components"
 
 type MathboxProps = React.ComponentProps<typeof Mathbox>
 type MathboxRef = React.ComponentRef<typeof Mathbox>
@@ -13,12 +13,14 @@ const storybookDefaultMathboxOptions = {
 }
 
 const CustomMathboxF = (props: MathboxProps, ref: React.Ref<MathboxRef>) => {
-  const { options: overrides, ...divProps } = props;
-  const options = useMemo(() => ({
-    ...storybookDefaultMathboxOptions,
-    ...(props.options ?? {})
-  }
-  ), [props.options])
+  const { options: overrides, ...divProps } = props
+  const options = useMemo(
+    () => ({
+      ...storybookDefaultMathboxOptions,
+      ...(props.options ?? {}),
+    }),
+    [props.options]
+  )
   return (
     <Mathbox options={options} {...divProps} ref={ref}>
       {props.children}

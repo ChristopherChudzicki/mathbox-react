@@ -20,29 +20,6 @@ function App() {
   const [expr, setExpr] = useState<AreaEmitter>(() => expr1)
   return (
     <>
-      {/**
-       * Changes from PointsForm will cause this whole component to re-
-       * render, when really only Points needs to update.
-       *
-       * It probably is not necessary for all Mathbox components to be
-       * children of MB.Mathbox. It should be possibly to
-       *  1. store a ref from Cartesian
-       *  2. pass that ref to a separate component, "PointsContainer" that is
-       *     NOT a child of  MB.Mathbox
-       *  3. Inside PointsContainer...
-       *     <PointsContainer>
-       *        <PointsForm />
-       *        <MathboxAPIContext.Provider value={refToMathboxParent}>
-       *          <Points />
-       *        </MathboxAPIContext.Provider>
-       *     </PointsContainer>
-       *
-       *    Where the Provider is given a ref to the mathbox parent node, in
-       *    this case the Cartesian node.
-       *
-       *  TODO: Test this and expose MathboxAPIContext. Probably also rename
-       *  it to MathboxContext
-       */}
       <PointsForm
         width={width}
         setWidth={setWidth}
@@ -68,3 +45,37 @@ function App() {
 }
 
 export default App
+
+/**
+ * Re above structure:
+ * 
+ * Changes from PointsForm will cause this whole component to re-render, when
+ * really only Points needs to update. (E.g., <Grid /> does not need to
+ * re-render.)
+ *
+ * This probably isn't a big deal. The re-renders should not trigger any actual
+ * updats to Mathbox because useEffect dependencies should not have changed.
+ *    - @Chris: Check this!
+ * 
+ * But I can think of two possible approaches for avoiding the unnecessary
+ * re-renders above.
+ * 
+ * One: It probably is not necessary for all Mathbox components to be children
+ * of MB.Mathbox. It should be possibly to
+ *  1. store a ref from Cartesian
+ *  2. pass that ref to a separate component, "PointsContainer" that is
+ *     NOT a child of  MB.Mathbox
+ *  3. Inside PointsContainer...
+ *     <PointsContainer>
+ *        <PointsForm />
+ *        <MathboxAPIContext.Provider value={refToMathboxParent}>
+ *          <Points />
+ *        </MathboxAPIContext.Provider>
+ *     </PointsContainer>
+ *
+ *  Where the Provider is given a ref to the mathbox parent node, in
+ *  this case the Cartesian node.
+ * 
+ * Two: The form could live inside Mathbox. There's no reason, I believe, that
+ * DOM-rendering components can't be children of Mathbox.
+ */

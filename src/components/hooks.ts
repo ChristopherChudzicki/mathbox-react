@@ -45,7 +45,7 @@ export const useMathboxAPI = <T extends NodeType>(
     }
   }, [parent, selection, setSelection, props, name])
 
-  useImperativeHandle(ref, () => selection)
+  useImperativeHandle(ref, () => selection, [selection])
 
   return selection
 }

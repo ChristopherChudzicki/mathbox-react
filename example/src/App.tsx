@@ -16,17 +16,27 @@ function App() {
   const [width, setWidth] = useState(32)
   const [height, setHeight] = useState(32)
   const [size, setSize] = useState(16)
+  const [show, setShow] = useState(true)
   const [expr, setExpr] = useState<AreaEmitter>(() => expr1)
 
+  // @ts-ignore
+  if (!window.boxes) {
+    // @ts-ignore
+    window.boxes = []
+  }
   const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
     if (mathbox === null) return
     console.log("setup!")
+    // @ts-ignore
+    window.boxes.push(mathbox)
     mathbox.three.camera.position.set(1, 1, 2)
   }, [])
 
   return (
     <>
       <PointsForm
+        show={show}
+        setShow={setShow}
         width={width}
         setWidth={setWidth}
         height={height}
@@ -36,7 +46,14 @@ function App() {
         expr={expr}
         setExpr={setExpr}
       />
-      <MB.Mathbox ref={setup} options={mathboxOptions} className="h-100">
+      <MB.Mathbox
+        showMathbox={show}
+        id="cat"
+        key="cat"
+        ref={setup}
+        options={mathboxOptions}
+        className="h-100"
+      >
         <MB.Cartesian>
           <MB.Grid axes="xz" />
           <Points width={width} height={height} size={size} expr={expr} />

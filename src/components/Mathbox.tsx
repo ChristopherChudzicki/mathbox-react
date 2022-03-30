@@ -10,6 +10,7 @@ import { mathBox, MathboxSelection, MathBoxOptions } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
 
 type Props = {
+  showMathbox?: boolean
   options?: MathBoxOptions
   initialCameraPosition?: number[]
 } & React.HTMLProps<HTMLDivElement>
@@ -18,7 +19,8 @@ const Mathbox = (
   props: Props,
   ref: React.Ref<MathboxSelection<"root"> | null>
 ) => {
-  const { children, initialCameraPosition, options, ...divProps } = props
+  const { children, initialCameraPosition, options, showMathbox, ...divProps } =
+    props
   const mathboxOptions = useMemo(() => options ?? {}, [options])
   const [selection, setSelection] = useState<MathboxSelection<"root"> | null>(
     null
@@ -26,7 +28,7 @@ const Mathbox = (
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   useEffect(() => {
     if (!container) return () => {}
-
+    if (!showMathbox) return () => {}
     const mathbox = mathBox({
       ...mathboxOptions,
       element: container,
@@ -44,13 +46,15 @@ const Mathbox = (
       mathbox.select("*").remove()
       mathbox.three.destroy()
     }
-  }, [container, mathboxOptions, initialCameraPosition])
+  }, [container, mathboxOptions, initialCameraPosition, showMathbox])
   useImperativeHandle(ref, () => selection, [selection])
   return (
     <div ref={setContainer} {...divProps}>
-      <MathboxAPIContext.Provider value={selection}>
-        {children}
-      </MathboxAPIContext.Provider>
+      {showMathbox && (
+        <MathboxAPIContext.Provider value={selection}>
+          {children}
+        </MathboxAPIContext.Provider>
+      )}
     </div>
   )
 }

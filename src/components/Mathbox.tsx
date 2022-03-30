@@ -45,7 +45,7 @@ const Mathbox = (
       mathbox.three.destroy()
     }
   }, [container, mathboxOptions, initialCameraPosition])
-  useImperativeHandle(ref, () => selection)
+  useImperativeHandle(ref, () => selection, [selection])
   return (
     <div ref={setContainer} {...divProps}>
       <MathboxAPIContext.Provider value={selection}>

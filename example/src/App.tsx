@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react"
-import { AreaEmitter } from "mathbox"
+import { AreaEmitter, MathboxSelection } from "mathbox"
 import * as MB from "mathbox-react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import PointsForm, { expr1 } from "./PointsForm"
@@ -18,8 +18,9 @@ function App() {
   const [size, setSize] = useState(16)
   const [expr, setExpr] = useState<AreaEmitter>(() => expr1)
 
-  const setup = useCallback((mathbox) => {
+  const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
     if (mathbox === null) return
+    console.log("setup!")
     mathbox.three.camera.position.set(1, 1, 2)
   }, [])
 

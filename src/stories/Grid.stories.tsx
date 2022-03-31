@@ -20,7 +20,7 @@ export default {
 } as Meta<typeof Grid>
 
 const Template: Story<React.ComponentProps<typeof Grid>> = (args) => (
-  <Mathbox style={{ height: 450 }}>
+  <Mathbox containerStyle={{ height: 450 }}>
     <Grid {...args} />
   </Mathbox>
 )

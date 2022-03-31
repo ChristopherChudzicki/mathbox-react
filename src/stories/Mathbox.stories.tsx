@@ -1,16 +1,16 @@
 import React from "react"
 import { Story, Meta } from "@storybook/react"
 
-import Mathbox from "../components/Mathbox"
+import { ContainedMathbox } from "../components"
 
 export default {
   title: "Mathbox",
-  component: Mathbox,
+  component: ContainedMathbox,
   argTypes: {},
-} as Meta<typeof Mathbox>
+} as Meta<typeof ContainedMathbox>
 
-const Template: Story<React.ComponentProps<typeof Mathbox>> = () => (
-  <Mathbox style={{ height: 450 }} />
+const Template: Story<React.ComponentProps<typeof ContainedMathbox>> = () => (
+  <ContainedMathbox />
 )
 
 export const HelloWorld = Template.bind({})

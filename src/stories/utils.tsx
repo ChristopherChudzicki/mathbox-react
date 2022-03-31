@@ -1,9 +1,9 @@
-import React, { forwardRef, useMemo } from "react"
+import React, { useMemo, useCallback } from "react"
+import { MathboxSelection } from "mathbox"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { Mathbox } from "../components"
+import { ContainedMathbox } from "../components"
 
-type MathboxProps = React.ComponentProps<typeof Mathbox>
-type MathboxRef = React.ComponentRef<typeof Mathbox>
+type MathboxProps = React.ComponentProps<typeof ContainedMathbox>
 
 const storybookDefaultMathboxOptions = {
   plugins: ["core", "controls", "cursor"],
@@ -12,20 +12,22 @@ const storybookDefaultMathboxOptions = {
   },
 }
 
-const CustomMathboxF = (props: MathboxProps, ref: React.Ref<MathboxRef>) => {
-  const { options: overrides, ...divProps } = props
+export const CustomMathbox = (props: MathboxProps) => {
+  const { options: overrides, ...others } = props
   const options = useMemo(
     () => ({
       ...storybookDefaultMathboxOptions,
-      ...(props.options ?? {}),
+      ...(overrides ?? {}),
     }),
-    [props.options]
+    [overrides]
   )
+  const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
+    if (mathbox === null) return
+    mathbox.three.camera.position.set(1, 1, 2)
+  }, [])
   return (
-    <Mathbox options={options} {...divProps} ref={ref}>
+    <ContainedMathbox ref={setup} options={options} {...others}>
       {props.children}
-    </Mathbox>
+    </ContainedMathbox>
   )
 }
-
-export const CustomMathbox = forwardRef(CustomMathboxF)

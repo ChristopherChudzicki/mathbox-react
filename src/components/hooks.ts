@@ -20,6 +20,7 @@ export const useMathboxAPI = <T extends NodeType>(
     () => () => {
       if (selection) {
         selection.remove()
+        setSelection(null)
       }
     },
     [selection]

@@ -17,6 +17,8 @@ function App() {
   const [height, setHeight] = useState(32)
   const [size, setSize] = useState(16)
   const [expr, setExpr] = useState<AreaEmitter>(() => expr1)
+  const [show, setShow] = useState(true)
+  const [container, setContainer] = useState<HTMLElement | null>(null)
 
   const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
     if (mathbox === null) return
@@ -35,13 +37,23 @@ function App() {
         setSize={setSize}
         expr={expr}
         setExpr={setExpr}
+        show={show}
+        setShow={setShow}
       />
-      <MB.Mathbox ref={setup} options={mathboxOptions} className="h-100">
-        <MB.Cartesian>
-          <MB.Grid axes="xz" />
-          <Points width={width} height={height} size={size} expr={expr} />
-        </MB.Cartesian>
-      </MB.Mathbox>
+      <div ref={setContainer} className="h-100">
+        {show && container && (
+          <MB.Mathbox
+            container={container}
+            ref={setup}
+            options={mathboxOptions}
+          >
+            <MB.Cartesian>
+              <MB.Grid axes="xz" />
+              <Points width={width} height={height} size={size} expr={expr} />
+            </MB.Cartesian>
+          </MB.Mathbox>
+        )}
+      </div>
     </>
   )
 }

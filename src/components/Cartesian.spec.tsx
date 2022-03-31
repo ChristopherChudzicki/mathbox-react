@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import Mathbox from "./Mathbox"
+import ContainedMathbox from "./ContainedMathbox"
 import { Cartesian, Grid } from "./components"
 import { MathboxRef } from "./types"
 
@@ -15,9 +15,9 @@ describe("Cartesian", () => {
     const mbRef: MathboxRef<"root"> = { current: null }
     const cartesianRef: MathboxRef<"cartesian"> = { current: null }
     render(
-      <Mathbox ref={mbRef}>
+      <ContainedMathbox ref={mbRef}>
         <Cartesian ref={cartesianRef} />
-      </Mathbox>
+      </ContainedMathbox>
     )
 
     expect(mbRef.current?.[0].type).toBe("root")
@@ -27,9 +27,9 @@ describe("Cartesian", () => {
   it("creates a cartesian instance as child of root", () => {
     const mbRef: MathboxRef<"root"> = { current: null }
     render(
-      <Mathbox ref={mbRef}>
+      <ContainedMathbox ref={mbRef}>
         <Cartesian />
-      </Mathbox>
+      </ContainedMathbox>
     )
     expect(mbRef.current?.select("cartesian").length).toBe(1)
   })
@@ -37,12 +37,12 @@ describe("Cartesian", () => {
   it("creates mathbox children as children of itself", () => {
     const mbRef: MathboxRef<"root"> = { current: null }
     render(
-      <Mathbox ref={mbRef}>
+      <ContainedMathbox ref={mbRef}>
         <Cartesian>
           <Grid />
           <Grid />
         </Cartesian>
-      </Mathbox>
+      </ContainedMathbox>
     )
     mbRef.current?.print()
     expect(mbRef.current?.select("cartesian").length).toBe(1)
@@ -52,12 +52,12 @@ describe("Cartesian", () => {
   it("removes its mathbox instance when unmounted", () => {
     const mbRef: MathboxRef<"root"> = { current: null }
     const { rerender } = render(
-      <Mathbox ref={mbRef}>
+      <ContainedMathbox ref={mbRef}>
         <Cartesian />
-      </Mathbox>
+      </ContainedMathbox>
     )
     expect(mbRef.current?.select("cartesian").length).toBe(1)
-    rerender(<Mathbox ref={mbRef} />)
+    rerender(<ContainedMathbox ref={mbRef} />)
     expect(mbRef.current?.select("cartesian").length).toBe(0)
   })
 
@@ -67,9 +67,9 @@ describe("Cartesian", () => {
   ])("passes appropriate props to its mathbox instance", ({ props }) => {
     const mbRef: MathboxRef<"root"> = { current: null }
     render(
-      <Mathbox ref={mbRef}>
+      <ContainedMathbox ref={mbRef}>
         <Cartesian {...props} />
-      </Mathbox>
+      </ContainedMathbox>
     )
     const cartesian = mbRef.current?.select<"cartesian">("cartesian")
 
@@ -83,18 +83,18 @@ describe("Cartesian", () => {
   it("updates props on its mathbox instance when rerendered", () => {
     const mbRef: MathboxRef<"root"> = { current: null }
     const { rerender } = render(
-      <Mathbox ref={mbRef}>
+      <ContainedMathbox ref={mbRef}>
         <Cartesian />
-      </Mathbox>
+      </ContainedMathbox>
     )
     const cartesian = mbRef.current?.select<"cartesian">("cartesian")
     assertNotUndefined(cartesian)
 
     expect(cartesian.get("visible")).toBe(true)
     rerender(
-      <Mathbox ref={mbRef}>
+      <ContainedMathbox ref={mbRef}>
         <Cartesian visible={false} />
-      </Mathbox>
+      </ContainedMathbox>
     )
     expect(cartesian.get("visible")).toBe(false)
   })

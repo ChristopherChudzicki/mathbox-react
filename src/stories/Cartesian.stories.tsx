@@ -25,7 +25,7 @@ export default {
 } as Meta<typeof Cartesian>
 
 const Template: Story<React.ComponentProps<typeof Cartesian>> = (args) => (
-  <Mathbox style={{ height: 450 }}>
+  <Mathbox containerStyle={{ height: 450 }}>
     <Cartesian {...args}>
       <Grid />
     </Cartesian>

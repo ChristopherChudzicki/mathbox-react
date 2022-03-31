@@ -31,7 +31,7 @@ const Template: Story<React.ComponentProps<typeof Point>> = (args) => {
   const { points, ...otherArgs } = args
   const [data, setData] = useState<MathboxSelection<"array">>()
   return (
-    <Mathbox style={{ height: 450 }}>
+    <Mathbox containerStyle={{ height: 450 }}>
       <Cartesian
         range={[
           [-5, 5],

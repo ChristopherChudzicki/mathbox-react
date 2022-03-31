@@ -26,6 +26,8 @@ type Props = {
   setHeight: (value: number) => void
   expr: AreaEmitter
   setExpr: (value: AreaEmitter) => void
+  show: boolean
+  setShow: (value: boolean) => void
 }
 
 const PointsForm = (props: Props) => {
@@ -81,6 +83,14 @@ const PointsForm = (props: Props) => {
           </option>
         ))}
       </select>
+      <label htmlFor="show">Show</label>
+      <span></span>
+      <input
+        id="show"
+        type="checkbox"
+        checked={props.show}
+        onChange={(e) => props.setShow(e.target.checked)}
+      />
     </div>
   )
 }

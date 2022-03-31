@@ -6,24 +6,26 @@ import React, {
   useMemo,
 } from "react"
 import { Color } from "three"
-import { mathBox, MathboxSelection, MathBoxOptions } from "mathbox"
+import { mathBox, RootProps, MathboxSelection, MathBoxOptions } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
+import { WithChildren } from "./types"
 
-type Props = {
-  options?: MathBoxOptions
-  initialCameraPosition?: number[]
-} & React.HTMLProps<HTMLDivElement>
+type Props = WithChildren<
+  {
+    container: HTMLElement
+    options?: MathBoxOptions
+  } & RootProps
+>
 
 const Mathbox = (
   props: Props,
   ref: React.Ref<MathboxSelection<"root"> | null>
 ) => {
-  const { children, initialCameraPosition, options, ...divProps } = props
+  const { container, children, options, ...rootProps } = props
   const mathboxOptions = useMemo(() => options ?? {}, [options])
   const [selection, setSelection] = useState<MathboxSelection<"root"> | null>(
     null
   )
-  const [container, setContainer] = useState<HTMLDivElement | null>(null)
   useEffect(() => {
     if (!container) return () => {}
 
@@ -37,21 +39,23 @@ const Mathbox = (
      * TODO: Should Mathbox component allow setting these more easily?
      */
     mathbox.three.renderer.setClearColor(new Color(0xffffff), 1.0)
-    if (initialCameraPosition) {
-      mathbox.three.camera.position.set(...initialCameraPosition)
-    }
     return () => {
       mathbox.select("*").remove()
       mathbox.three.destroy()
+      setSelection(null)
     }
-  }, [container, mathboxOptions, initialCameraPosition])
+  }, [container, mathboxOptions])
+
+  useEffect(() => {
+    if (!selection) return
+    selection.set(rootProps)
+  }, [selection, rootProps])
+
   useImperativeHandle(ref, () => selection, [selection])
   return (
-    <div ref={setContainer} {...divProps}>
-      <MathboxAPIContext.Provider value={selection}>
-        {children}
-      </MathboxAPIContext.Provider>
-    </div>
+    <MathboxAPIContext.Provider value={selection}>
+      {children}
+    </MathboxAPIContext.Provider>
   )
 }
 

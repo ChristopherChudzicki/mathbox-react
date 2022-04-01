@@ -5,13 +5,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import PointsForm, { expr1 } from "./PointsForm"
 import Points from "./Points"
 
-const mathboxOptions = {
-  plugins: ["core", "controls", "cursor"],
-  controls: {
-    klass: OrbitControls,
-  },
-}
-
 function App() {
   const [width, setWidth] = useState(32)
   const [height, setHeight] = useState(32)
@@ -40,12 +33,18 @@ function App() {
         show={show}
         setShow={setShow}
       />
+      {/* <div ref={setContainer} key={width.toString()} className="h-100"> */}
       <div ref={setContainer} className="h-100">
         {show && container && (
           <MB.Mathbox
             container={container}
             ref={setup}
-            options={mathboxOptions}
+            options={{
+              plugins: ["core", "controls", "cursor"],
+              controls: {
+                klass: OrbitControls,
+              },
+            }}
           >
             <MB.Cartesian>
               <MB.Grid axes="xz" />

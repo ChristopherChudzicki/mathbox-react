@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react"
 import { Props, NodeType, MathboxSelection } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
-import { useMathboxAPI } from "./hooks"
+import { useMathboxAPI, isSelectionParent } from "./hooks"
 import { WithChildren } from "./types"
 
 type MathboxComponent<T extends NodeType> = React.ForwardRefExoticComponent<
@@ -15,9 +15,12 @@ const mathboxComponentFactory = <T extends NodeType>(
     props: WithChildren<Props[T]>,
     ref: React.Ref<MathboxSelection<T> | null>
   ) => {
-    const nodeAPI = useMathboxAPI(type, props, ref)
+    const { selection, parent } = useMathboxAPI(type, props, ref)
+    if (!selection) return null
+    if (!parent) return null
+    if (!isSelectionParent(selection, parent)) return null
     return (
-      <MathboxAPIContext.Provider value={nodeAPI}>
+      <MathboxAPIContext.Provider value={selection}>
         {props.children}
       </MathboxAPIContext.Provider>
     )

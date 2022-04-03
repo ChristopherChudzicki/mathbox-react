@@ -1,6 +1,6 @@
 {
   "name": "mathbox-react",
-  "version": "0.0.7-dev",
+  "version": "0.0.7",
   "description": "React wrapper for Mathbox",
   "license": "ISC",
   "author": "Chris Chudzicki",

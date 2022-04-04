@@ -1,6 +1,6 @@
 {
   "name": "mathbox-react",
-  "version": "0.0.8",
+  "version": "0.0.9-dev-2",
   "description": "React wrapper for Mathbox",
   "license": "ISC",
   "author": "Chris Chudzicki",
@@ -56,7 +56,7 @@
   },
   "peerDependencies": {
     "mathbox": "^2.1.2",
-    "react": "^17.0.2",
+    "react": "^17.0.2 || ^18.0.0",
     "three": ">=0.118.0"
   }
 }

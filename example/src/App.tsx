@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import { useState, useCallback } from "react"
 import { AreaEmitter, MathboxSelection } from "mathbox"
 import * as MB from "mathbox-react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
@@ -19,6 +19,9 @@ function App() {
   const [expr, setExpr] = useState<AreaEmitter>(() => expr1)
   const [show, setShow] = useState(true)
   const [container, setContainer] = useState<HTMLElement | null>(null)
+  const [key, setKey] = useState("key-0")
+  // @ts-ignore
+  window.setKey = setKey
 
   const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
     if (mathbox === null) return
@@ -40,8 +43,8 @@ function App() {
         show={show}
         setShow={setShow}
       />
-      <div ref={setContainer} className="h-100">
-        {show && container && (
+      <div ref={setContainer} className="h-100" key={key}>
+        {container && (
           <MB.Mathbox
             container={container}
             ref={setup}
@@ -49,7 +52,9 @@ function App() {
           >
             <MB.Cartesian>
               <MB.Grid axes="xz" />
-              <Points width={width} height={height} size={size} expr={expr} />
+              {show && (
+                <Points width={width} height={height} size={size} expr={expr} />
+              )}
             </MB.Cartesian>
           </MB.Mathbox>
         )}

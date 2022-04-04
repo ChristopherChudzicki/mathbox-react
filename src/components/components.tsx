@@ -1,8 +1,16 @@
-import React, { forwardRef } from "react"
+import React, {
+  forwardRef,
+  useRef,
+  useContext,
+  useEffect,
+  useReducer,
+  useImperativeHandle,
+} from "react"
 import { Props, NodeType, MathboxSelection } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
-import { useMathboxAPI, isSelectionParent } from "./hooks"
 import { WithChildren } from "./types"
+
+type WithPrivateUp = MathboxSelection & { _up: WithPrivateUp | null }
 
 type MathboxComponent<T extends NodeType> = React.ForwardRefExoticComponent<
   WithChildren<Props[T]> & React.RefAttributes<MathboxSelection<T>>
@@ -15,12 +23,44 @@ const mathboxComponentFactory = <T extends NodeType>(
     props: WithChildren<Props[T]>,
     ref: React.Ref<MathboxSelection<T> | null>
   ) => {
-    const { selection, parent } = useMathboxAPI(type, props, ref)
-    if (!selection) return null
-    if (!parent) return null
-    if (!isSelectionParent(selection, parent)) return null
+    const [_ignored, forceUpdate] = useReducer((x) => x + 1, 0)
+    const parent = useContext(MathboxAPIContext)
+    const selection = useRef<MathboxSelection<T> | null>(null)
+    useEffect(
+      () => () => {
+        if (selection.current) {
+          selection.current.remove()
+        }
+      },
+      []
+    )
+    useImperativeHandle(ref, () => selection.current)
+
+    const { children, ...others } = props
+    useEffect(() => {
+      if (!parent) return
+      if (selection.current) {
+        const sel = selection.current as unknown as WithPrivateUp
+        // eslint-disable-next-line no-underscore-dangle
+        if ((sel._up as WithPrivateUp)[0] !== parent[0]) {
+          selection.current.remove()
+          selection.current = null
+          forceUpdate()
+        }
+      }
+
+      if (!selection.current) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        selection.current = parent[type](others)
+        forceUpdate()
+      } else {
+        selection.current.set(others)
+      }
+    }, [parent, others])
+
     return (
-      <MathboxAPIContext.Provider value={selection}>
+      <MathboxAPIContext.Provider value={selection.current}>
         {props.children}
       </MathboxAPIContext.Provider>
     )

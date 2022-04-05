@@ -9,8 +9,7 @@ import React, {
 import { Props, NodeType, MathboxSelection } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
 import { WithChildren } from "./types"
-
-type WithPrivateUp = MathboxSelection & { _up: WithPrivateUp | null }
+import { isRootDestroyed, isSelectionParent } from "./util"
 
 type MathboxComponent<T extends NodeType> = React.ForwardRefExoticComponent<
   WithChildren<Props[T]> & React.RefAttributes<MathboxSelection<T>>
@@ -39,16 +38,17 @@ const mathboxComponentFactory = <T extends NodeType>(
     const { children, ...others } = props
     useEffect(() => {
       if (!parent) return
+      if (isRootDestroyed(parent)) {
+        forceUpdate()
+        return
+      }
       if (selection.current) {
-        const sel = selection.current as unknown as WithPrivateUp
-        // eslint-disable-next-line no-underscore-dangle
-        if ((sel._up as WithPrivateUp)[0] !== parent[0]) {
+        if (!isSelectionParent(selection.current, parent)) {
           selection.current.remove()
           selection.current = null
           forceUpdate()
         }
       }
-
       if (!selection.current) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore

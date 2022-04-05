@@ -201,4 +201,40 @@ describe("Cartesian", () => {
     expect(mbRef.current.three.element).toBe(containerDiv)
     expect(mbRef.current.select("cartesian").length).toBe(1)
   })
+
+  it("Can add and remove children without error", async () => {
+    const mbRef: MathboxRef<"root"> = { current: null }
+
+    const { rerender } = render(
+      <ContainedMathbox ref={mbRef} options={{}}>
+        <Cartesian>
+          <Grid />
+        </Cartesian>
+      </ContainedMathbox>
+    )
+
+    assertNotNil(mbRef.current)
+    expect(mbRef.current.select("grid").length).toBe(1)
+
+    rerender(
+      <ContainedMathbox ref={mbRef} options={{}}>
+        <Cartesian>
+          <Grid />
+          <Grid />
+        </Cartesian>
+      </ContainedMathbox>
+    )
+
+    assertNotNil(mbRef.current)
+    expect(mbRef.current.select("grid").length).toBe(2)
+
+    rerender(
+      <ContainedMathbox ref={mbRef} options={{}}>
+        <Cartesian />
+      </ContainedMathbox>
+    )
+
+    assertNotNil(mbRef.current)
+    expect(mbRef.current.select("grid").length).toBe(0)
+  })
 })

@@ -29,6 +29,7 @@ const mathboxComponentFactory = <T extends NodeType>(
       () => () => {
         if (selection.current) {
           selection.current.remove()
+          selection.current = null
         }
       },
       []

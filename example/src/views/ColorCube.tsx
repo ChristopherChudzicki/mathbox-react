@@ -21,7 +21,7 @@ export default function ColorCube() {
     <>
       <ControlsForm onChange={setFormValues} />
       <MB.ContainedMathbox
-        options={{ ...mathboxOptions }}
+        options={mathboxOptions}
         ref={setup}
         containerStyle={{ height: "500px" }}
       >

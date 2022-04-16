@@ -1,4 +1,6 @@
 /* eslint-disable no-underscore-dangle */
+import { isEqual } from "lodash"
+import { useRef, useMemo } from "react"
 import { MathboxSelection, NodeType } from "mathbox"
 
 type WithPrivateUp = MathboxSelection & { _up?: WithPrivateUp }
@@ -71,9 +73,34 @@ const CAN_HAVE_CHILDREN = [
 
 export type ParentNodeTypes = typeof CAN_HAVE_CHILDREN[number]
 
-export const canNodeHaveChildren = (type: NodeType) => (CAN_HAVE_CHILDREN as readonly string[]).includes(type)
+export const canNodeHaveChildren = (type: NodeType) =>
+  (CAN_HAVE_CHILDREN as readonly string[]).includes(type)
 
 export const capitalize = (s: string) => {
   if (!s) return ""
   return s[0].toLocaleUpperCase() + s.slice(1)
+}
+
+/**
+ * Returns the same reference to `value` as long as the the given values are
+ * deep equal.
+ *
+ * This is, in general, not a great idea. See
+ * https://github.com/facebook/react/issues/14476#issuecomment-471199055
+ *
+ * This should work OK for mathbox options because the objects in question are
+ * either shallow, or are deep equal at a fairly shallow level.
+ * E.g., OrbitControls may not be a shall object, but if it's not, it will at
+ * least be deep equal between renders.
+ *
+ * But should work OK for mathbox options.
+ */
+export const useDeepCompareMemo = <T>(value: T, initial: T): T => {
+  const oldValue = useRef<T>(initial)
+  const memoOptions = useMemo(() => {
+    if (isEqual(value, oldValue.current)) return oldValue.current
+    oldValue.current = value
+    return value
+  }, [value])
+  return memoOptions
 }

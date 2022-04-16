@@ -3,12 +3,12 @@ import React, {
   useState,
   forwardRef,
   useImperativeHandle,
-  useMemo,
 } from "react"
 import { Color } from "three"
 import { mathBox, RootProps, MathboxSelection, MathBoxOptions } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
 import { WithChildren } from "./types"
+import { useDeepCompareMemo } from "./util"
 
 type Props = WithChildren<
   {
@@ -22,7 +22,7 @@ const Mathbox = (
   ref: React.Ref<MathboxSelection<"root"> | null>
 ) => {
   const { container, children, options, ...rootProps } = props
-  const mathboxOptions = useMemo(() => options ?? {}, [options])
+  const mathboxOptions = useDeepCompareMemo(options ?? {}, {})
   const [selection, setSelection] = useState<MathboxSelection<"root"> | null>(
     null
   )
@@ -39,6 +39,7 @@ const Mathbox = (
      * TODO: Should Mathbox component allow setting these more easily?
      */
     mathbox.three.renderer.setClearColor(new Color(0xffffff), 1.0)
+    mathbox.three.camera.position.set(1, 1, 2)
     return () => {
       mathbox.select("*").remove()
       mathbox.three.destroy()

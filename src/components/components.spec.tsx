@@ -27,6 +27,24 @@ const assertSelectionsEqual = (s1: MathboxSelection, s2: MathboxSelection) => {
     })
 }
 
+describe("ContainedMathbox", () => {
+  it("makes a new mathbox instance only if the options have changed", () => {
+    const mbRef: MathboxRef<"root"> = { current: null }
+    const { rerender } = render(<ContainedMathbox options={{}} ref={mbRef} />)
+
+    const mb0 = mbRef.current
+    assertNotNil(mb0)
+    rerender(<ContainedMathbox options={{}} ref={mbRef} />)
+    const mb1 = mbRef.current
+    expect(mb1).toBe(mb0)
+    assertNotNil(mb1)
+    rerender(<ContainedMathbox options={{ plugins: ["core"] }} ref={mbRef} />)
+    const mb2 = mbRef.current
+    assertNotNil(mb2)
+    expect(mb2).not.toBe(mb1)
+  })
+})
+
 describe("Cartesian", () => {
   it("exposes Mathbox instance via ref", () => {
     const mbRef: MathboxRef<"root"> = { current: null }
@@ -145,7 +163,7 @@ describe("Cartesian", () => {
      * When re-rendered, this will create a new mathBox since the options
      * object prop will have changed.
      */
-    const options2 = {}
+    const options2 = { plugins: ["core"] }
     expect(options1).not.toBe(options2)
 
     rerender(
@@ -163,7 +181,7 @@ describe("Cartesian", () => {
     assertNotNil(cartesian2)
     assertNotNil(grid2)
 
-    // It creates a new instance b/c the options prop has changed by reference
+    // The options have changed (via deep equal) so a new instance is created
     expect(mb1).not.toBe(mb2)
 
     expect(cartesian2).toHaveLength(1)

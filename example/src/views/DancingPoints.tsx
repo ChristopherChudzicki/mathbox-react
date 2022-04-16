@@ -26,8 +26,6 @@ export default function DancingPoints() {
   const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
     // @ts-ignore
     window.mathbox = mathbox
-    if (mathbox === null) return
-    mathbox.three.camera.position.set(1, 1, 2)
   }, [])
 
   return (

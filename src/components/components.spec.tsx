@@ -3,7 +3,7 @@ import { render, act } from "@testing-library/react"
 import { MathboxSelection } from "mathbox"
 import ContainedMathbox from "./ContainedMathbox"
 import Mathbox from "./Mathbox"
-import { Cartesian, Grid } from "./components"
+import { Cartesian, Grid, Voxel } from "./components"
 import { MathboxRef } from "./types"
 
 function assertNotNil<T>(value: T): asserts value is NonNullable<T> {
@@ -236,5 +236,23 @@ describe("Cartesian", () => {
 
     assertNotNil(mbRef.current)
     expect(mbRef.current.select("grid").length).toBe(0)
+  })
+})
+
+describe("<Voxel />", () => {
+  it("throws a runtime error if it has children", () => {
+    const willThrow = () =>
+      render(
+        <ContainedMathbox>
+          <Cartesian>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
+            {/* @ts-ignore */}
+            <Voxel>
+              <Grid />
+            </Voxel>
+          </Cartesian>
+        </ContainedMathbox>
+      )
+    expect(willThrow).toThrow("Component <Voxel /> cannot have children.")
   })
 })

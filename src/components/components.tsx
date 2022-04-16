@@ -9,15 +9,24 @@ import React, {
 import { Props, NodeType, MathboxSelection } from "mathbox"
 import MathboxAPIContext from "./MathboxNodeContext"
 import { WithChildren } from "./types"
-import { isRootDestroyed, isSelectionParent } from "./util"
+import {
+  isRootDestroyed,
+  isSelectionParent,
+  canNodeHaveChildren,
+  ParentNodeTypes,
+  capitalize,
+} from "./util"
 
 type MathboxComponent<T extends NodeType> = React.ForwardRefExoticComponent<
-  WithChildren<Props[T]> & React.RefAttributes<MathboxSelection<T>>
+  (T extends ParentNodeTypes ? WithChildren<Props[T]> : Props[T]) &
+    React.RefAttributes<MathboxSelection<T>>
 >
 
 const mathboxComponentFactory = <T extends NodeType>(
   type: T
 ): MathboxComponent<T> => {
+  const canHaveChildren = canNodeHaveChildren(type)
+  const componentName = capitalize(type)
   const Comp = (
     props: WithChildren<Props[T]>,
     ref: React.Ref<MathboxSelection<T> | null>
@@ -59,7 +68,12 @@ const mathboxComponentFactory = <T extends NodeType>(
         selection.current.set(others)
       }
     }, [parent, others])
-
+    if (!canHaveChildren) {
+      if (props.children) {
+        throw new Error(`Component <${componentName} /> cannot have children.`)
+      }
+      return null
+    }
     return (
       <MathboxAPIContext.Provider value={selection.current}>
         {props.children}

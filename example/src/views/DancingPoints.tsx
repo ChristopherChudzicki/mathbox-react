@@ -12,7 +12,7 @@ const mathboxOptions = {
   },
 }
 
-export default function App() {
+export default function DancingPoints() {
   const [container, setContainer] = useState<HTMLElement | null>(null)
   const [formValues, setFormValues] = useState<FormValues>(defaultFormValues)
   const [emitter, setEmitter] = useState<AreaEmitter>(() => {})
@@ -58,7 +58,7 @@ export default function App() {
   )
 }
 
-type FormValues = {
+interface FormValues {
   showPoints: boolean
   width: number
   height: number
@@ -66,7 +66,7 @@ type FormValues = {
   expr: string
   A: number
 }
-const defaultFormValues = {
+const defaultFormValues: FormValues = {
   showPoints: true,
   width: 48,
   height: 64,

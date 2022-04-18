@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import isEqual from "lodash/eqDeep"
+import isEqual from "lodash/isEqual"
 import { useRef, useMemo } from "react"
 import { MathboxSelection, NodeType } from "mathbox"
 

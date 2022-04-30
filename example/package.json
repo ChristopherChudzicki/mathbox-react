@@ -9,7 +9,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-import-resolver-typescript": "2.7.1",
     "eslint-plugin-prettier": "4.0.0",
-    "mathbox": "2.1.4",
+    "mathbox": "2.2.0",
     "mathbox-react": "0.0.10",
     "mathjs": "10.5.0",
     "memoize-one": "6.0.0",

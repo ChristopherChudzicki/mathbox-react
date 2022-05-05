@@ -14,7 +14,7 @@
     "three": "0.140.0"
   },
   "devDependencies": {
-    "@types/three": "0.139.0",
+    "@types/three": "0.140.0",
     "@typescript-eslint/eslint-plugin": "5.21.0",
     "@typescript-eslint/parser": "5.21.0",
     "eslint-config-prettier": "8.5.0",

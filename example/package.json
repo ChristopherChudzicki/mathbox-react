@@ -11,10 +11,10 @@
     "react-dom": "18.1.0",
     "react-hook-form": "7.31.1",
     "react-router-dom": "6.3.0",
-    "three": "0.140.0"
+    "three": "0.143.0"
   },
   "devDependencies": {
-    "@types/three": "0.140.0",
+    "@types/three": "0.143.0",
     "@typescript-eslint/eslint-plugin": "5.31.0",
     "@typescript-eslint/parser": "5.31.0",
     "eslint-config-prettier": "8.5.0",

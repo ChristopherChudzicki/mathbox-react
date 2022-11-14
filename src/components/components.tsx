@@ -289,11 +289,6 @@ export const Retext = mathboxComponentFactory("retext")
 export const Reveal = mathboxComponentFactory("reveal")
 
 /**
- * Component wrapper for mathbox [`root`](https://github.com/unconed/mathbox/blob/master/docs/primitives.md#baseroot).
- */
-export const Root = mathboxComponentFactory("root")
-
-/**
  * Component wrapper for mathbox [`rtt`](https://github.com/unconed/mathbox/blob/master/docs/primitives.md#rttrtt).
  */
 export const Rtt = mathboxComponentFactory("rtt")

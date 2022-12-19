@@ -29,7 +29,7 @@ export default {
 
 const Template: Story<React.ComponentProps<typeof Point>> = (args) => {
   const { points, ...otherArgs } = args
-  const [data, setData] = useState<MathboxSelection<"array">>()
+  const [data, setData] = useState<MathboxSelection<"array"> | null>(null)
   return (
     <Mathbox containerStyle={{ height: 450 }}>
       <Cartesian
@@ -66,3 +66,10 @@ const Template: Story<React.ComponentProps<typeof Point>> = (args) => {
 
 export const DefaultPoint = Template.bind({})
 DefaultPoint.args = {}
+
+export const LiveProps = Template.bind({})
+LiveProps.args = {
+  liveProps: {
+    size: (t: number) => 20 * (1 + 0.5 * Math.sin(t)),
+  },
+}

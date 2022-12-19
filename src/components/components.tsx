@@ -17,9 +17,14 @@ import {
   capitalize,
 } from "./util"
 
+type LiveProps<P> = {
+  [K in keyof P]: (t: number, dt: number) => P[K]
+}
 type MathboxComponent<T extends NodeType> = React.ForwardRefExoticComponent<
   (T extends ParentNodeTypes ? WithChildren<Props[T]> : Props[T]) &
-    React.RefAttributes<MathboxSelection<T>>
+    React.RefAttributes<MathboxSelection<T>> & {
+      liveProps?: LiveProps<Props[T]>
+    }
 >
 
 const mathboxComponentFactory = <T extends NodeType>(
@@ -28,12 +33,13 @@ const mathboxComponentFactory = <T extends NodeType>(
   const canHaveChildren = canNodeHaveChildren(type)
   const componentName = capitalize(type)
   const Comp = (
-    props: WithChildren<Props[T]>,
+    props: WithChildren<Props[T]> & { liveProps?: LiveProps<Props[T]> },
     ref: React.Ref<MathboxSelection<T> | null>
   ) => {
     const [_ignored, forceUpdate] = useReducer((x) => x + 1, 0)
     const parent = useContext(MathboxAPIContext)
     const selection = useRef<MathboxSelection<T> | null>(null)
+    const prevLiveProps = useRef<LiveProps<Props[T]> | undefined>(undefined)
     useEffect(
       () => () => {
         if (selection.current) {
@@ -45,7 +51,7 @@ const mathboxComponentFactory = <T extends NodeType>(
     )
     useImperativeHandle(ref, () => selection.current)
 
-    const { children, ...others } = props
+    const { children, liveProps, ...others } = props
     useEffect(() => {
       if (!parent) return
       if (isRootDestroyed(parent)) {
@@ -61,13 +67,31 @@ const mathboxComponentFactory = <T extends NodeType>(
       }
       if (!selection.current) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        selection.current = parent[type](others)
+        // @ts-expect-error
+        selection.current = parent[type](others, liveProps)
         forceUpdate()
       } else {
+        /**
+         * If liveProps have changed, remove all the old liveProps.
+         * (The same prop cannot be re-assigned live without being un-assigned
+         * first.)
+         *
+         * We could unbind just the ones that have changed, but simpler to
+         * unbind them all.
+         */
+        if (prevLiveProps.current && liveProps !== prevLiveProps.current) {
+          Object.keys(prevLiveProps.current).forEach((key) => {
+            // @ts-expect-error this is not in ts yet
+            selection.current.unbind(key)
+          })
+        }
+        if (liveProps && liveProps !== prevLiveProps.current) {
+          selection.current.bind(liveProps)
+        }
         selection.current.set(others)
       }
-    }, [parent, others])
+      prevLiveProps.current = liveProps
+    }, [parent, others, liveProps])
     if (!canHaveChildren) {
       if (props.children) {
         throw new Error(`Component <${componentName} /> cannot have children.`)

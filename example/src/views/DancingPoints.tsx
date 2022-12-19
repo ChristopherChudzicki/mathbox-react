@@ -24,7 +24,7 @@ export default function DancingPoints() {
   }, [formValues.expr, formValues.A])
 
   const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
-    // @ts-ignore
+    // @ts-expect-error
     window.mathbox = mathbox
   }, [])
 

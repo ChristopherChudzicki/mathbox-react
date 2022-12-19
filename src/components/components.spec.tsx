@@ -134,6 +134,41 @@ describe("Cartesian", () => {
     expect(cartesian.get("visible")).toBe(false)
   })
 
+  it("updates liveProps on its mathbox instance when rerendered", async () => {
+    const mbRef: MathboxRef<"root"> = { current: null }
+    const { rerender } = render(
+      <ContainedMathbox ref={mbRef}>
+        <Cartesian>
+          <Grid
+            liveProps={{
+              width: (t) => 1 + t,
+            }}
+          />
+        </Cartesian>
+      </ContainedMathbox>
+    )
+    const grid = mbRef.current?.select<"grid">("grid")
+    assertNotNil(grid)
+
+    const w1 = grid.get("width")
+    await new Promise((resolve) => {
+      setTimeout(resolve, 500)
+    })
+    const w2 = grid.get("width")
+    expect(w1).toBe(1)
+    // Mathbox uses seconds
+    expect(w2 - w1).toBeGreaterThan(0.45)
+    expect(w2 - w1).toBeLessThanOrEqual(0.5)
+    rerender(
+      <ContainedMathbox ref={mbRef}>
+        <Cartesian>
+          <Grid width={10} />
+        </Cartesian>
+      </ContainedMathbox>
+    )
+    expect(grid.get("width")).toBe(10)
+  })
+
   it("re-renders inside new instance when root changes", () => {
     const mbRef: MathboxRef<"root"> = { current: null }
     const cartesianRef: MathboxRef<"cartesian"> = { current: null }
@@ -264,7 +299,7 @@ describe("<Voxel />", () => {
         <ContainedMathbox>
           <Cartesian>
             {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
-            {/* @ts-ignore */}
+            {/* @ts-expect-error */}
             <Voxel>
               <Grid />
             </Voxel>

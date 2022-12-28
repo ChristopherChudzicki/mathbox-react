@@ -9,7 +9,7 @@
     "memoize-one": "6.0.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-hook-form": "7.31.1",
+    "react-hook-form": "7.41.2",
     "react-router-dom": "6.3.0",
     "three": "0.140.0"
   },

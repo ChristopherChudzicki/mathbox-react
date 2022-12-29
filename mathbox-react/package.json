@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "rm -rf build && rollup --config",
-    "build-watch": "yarn build --watch",
+    "build-watch": "rollup --config --watch",
     "storybook": "start-storybook -p 6006",
     "lint": "yarn global:lint",
     "format": "yarn global:format",

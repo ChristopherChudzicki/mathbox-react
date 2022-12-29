@@ -73,6 +73,6 @@ module.exports = {
     },
   ],
   parserOptions: {
-    project: ["./mathbox-react/tsconfig.json", "./example/tsconfig.json"]
+    project: ["./mathbox-react/tsconfig.json", "./examples/tsconfig.json"]
   }
 }

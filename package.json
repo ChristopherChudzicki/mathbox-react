@@ -6,6 +6,7 @@
     "./mathbox-react"
   ],
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "eslint": "^8.30.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "17.0.0",
@@ -18,6 +19,7 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
+    "examples": "./scripts/run_examples.sh",
     "lint": "yarn workspaces foreach run lint",
     "format": "yarn workspaces foreach run format",
     "test": "yarn workspaces foreach run test",

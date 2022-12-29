@@ -1,3 +1,10 @@
+const path = require("node:path");
+
+/**
+ * Path to current yarn workspace tsconfig file.
+ */
+const tsconfig = path.join(process.env.INIT_CWD, "tsconfig.json");
+
 module.exports = {
   extends: [
     "react-app",
@@ -67,6 +74,6 @@ module.exports = {
     },
   ],
   parserOptions: {
-    project: "./tsconfig.base.json",
-  },
+    project: tsconfig
+  }
 }

@@ -4,5 +4,22 @@
   "workspaces": [
     "./example",
     "./mathbox-react"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-import-resolver-typescript": "3.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.7.1",
+    "typescript": "^4.9.4"
+  },
+  "scripts": {
+    "global:lint": "cd $INIT_CWD && eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
+    "global:format": "cd $INIT_CWD && prettier src --check",
+    "global:autofix": "cd $INIT_CWD && yarn format --write && yarn lint --fix"
+  }
 }

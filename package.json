@@ -1,67 +1,8 @@
 {
-  "name": "mathbox-react",
-  "version": "0.0.11-rc",
-  "description": "React wrapper for Mathbox",
+  "name": "mathbox-react-root",
   "license": "ISC",
-  "author": "Chris Chudzicki",
-  "main": "build/cjs/index.js",
-  "module": "build/esm/index.js",
-  "types": "build/esm/types",
-  "scripts": {
-    "build": "rm -rf build && rollup -c",
-    "build-storybook": "build-storybook",
-    "storybook": "start-storybook -p 6006",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
-    "format": "prettier src --check",
-    "autofix": "npm run format -- --write && npm run lint -- --fix",
-    "prepack": "npm run build",
-    "test": "jest"
-  },
-  "devDependencies": {
-    "@babel/core": "7.19.3",
-    "@babel/preset-env": "7.19.4",
-    "@rollup/plugin-commonjs": "23.0.0",
-    "@rollup/plugin-node-resolve": "15.0.0",
-    "@rollup/plugin-typescript": "9.0.1",
-    "@storybook/addon-actions": "6.5.12",
-    "@storybook/addon-essentials": "6.5.12",
-    "@storybook/addon-interactions": "6.5.12",
-    "@storybook/addon-links": "6.5.12",
-    "@storybook/react": "6.5.12",
-    "@storybook/testing-library": "0.0.13",
-    "@testing-library/react": "12.1.5",
-    "@types/jest": "27.5.2",
-    "@types/lodash": "4.14.186",
-    "@types/react": "18.0.21",
-    "@types/three": "0.140.0",
-    "babel-jest": "27.5.1",
-    "babel-loader": "8.2.5",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-config-airbnb-typescript": "17.0.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-config-react-app": "7.0.1",
-    "eslint-import-resolver-typescript": "3.5.1",
-    "eslint-plugin-prettier": "4.2.1",
-    "jest": "27.5.1",
-    "mathbox": "2.2.1",
-    "prettier": "2.7.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "rollup": "2.79.1",
-    "rollup-plugin-dts": "4.2.3",
-    "rollup-plugin-peer-deps-external": "2.2.4",
-    "rollup-plugin-terser": "7.0.2",
-    "three": "0.140.0",
-    "ts-jest": "27.1.5",
-    "typescript": "4.8.4"
-  },
-  "peerDependencies": {
-    "mathbox": "^2.2.1",
-    "react": "^17.0.2 || ^18.0.0",
-    "three": ">=0.118.0"
-  },
-  "dependencies": {
-    "eslint": "^8.30.0",
-    "lodash": "^4.17.21"
-  }
+  "workspaces": [
+    "./example",
+    "./mathbox-react"
+  ]
 }

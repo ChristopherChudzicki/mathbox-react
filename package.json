@@ -26,5 +26,6 @@
     "global:lint": "eslint \"$INIT_CWD/src/**/*.{ts,tsx}\" --max-warnings=0",
     "global:format": "prettier $INIT_CWD/src --check",
     "global:autofix": "cd $INIT_CWD && yarn global:format --write && yarn global:lint --fix"
-  }
+  },
+  "packageManager": "yarn@3.3.1"
 }

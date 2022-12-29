@@ -8,7 +8,7 @@ import "./index.css"
 
 const rootElement = document.getElementById("root")
 if (!rootElement) {
-  throw new Error ("No root element found")
+  throw new Error("No root element found")
 }
 
 const root = ReactDOM.createRoot(rootElement)

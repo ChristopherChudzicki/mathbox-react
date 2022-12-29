@@ -2,7 +2,7 @@
   "name": "mathbox-react-root",
   "license": "ISC",
   "workspaces": [
-    "./example",
+    "./examples",
     "./mathbox-react"
   ],
   "devDependencies": {
@@ -25,7 +25,7 @@
     "test": "yarn workspaces foreach run test",
     "global:lint": "eslint \"$INIT_CWD/src/**/*.{ts,tsx}\" --max-warnings=0",
     "global:format": "prettier $INIT_CWD/src --check",
-    "global:autofix": "cd $INIT_CWD && yarn global:format --write && yarn global:lint --fix"
+    "global:autofix": "cd $INIT_CWD && pwd && yarn global:format --write && yarn global:lint --fix"
   },
   "packageManager": "yarn@3.3.1"
 }

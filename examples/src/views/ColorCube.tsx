@@ -95,7 +95,6 @@ const ControlsForm: React.FC<ControlsFormProps> = ({ onChange }) => {
   )
 }
 
-
 const ColorCube: React.FC = () => {
   const [formValues, setFormValues] = useState<FormValues>(defaultFormValues)
   const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {

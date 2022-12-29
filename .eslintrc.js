@@ -1,10 +1,3 @@
-const path = require("node:path");
-
-/**
- * Path to current yarn workspace tsconfig file.
- */
-const tsconfig = path.join(process.env.INIT_CWD, "tsconfig.json");
-
 module.exports = {
   extends: [
     "react-app",
@@ -55,6 +48,12 @@ module.exports = {
         },
       },
     ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        assert: "either"
+      }
+    ]
   },
   settings: {},
   overrides: [
@@ -74,6 +73,6 @@ module.exports = {
     },
   ],
   parserOptions: {
-    project: tsconfig
+    project: ["./mathbox-react/tsconfig.json", "./example/tsconfig.json"]
   }
 }

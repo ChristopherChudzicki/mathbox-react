@@ -6,15 +6,17 @@
   "author": "Chris Chudzicki",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "types": "build/esm/types",
-  "files": ["build"],
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "build": "rm -rf build && rollup --config",
     "build-watch": "yarn build --watch",
     "storybook": "start-storybook -p 6006",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
-    "format": "prettier src --check",
-    "autofix": "yarn format --write && yarn lint --fix",
+    "lint": "yarn global:lint",
+    "format": "yarn global:format",
+    "autofix": "yarn global:autofix",
     "prepack": "yarn build",
     "test": "jest"
   },

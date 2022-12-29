@@ -24,8 +24,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
-    "format": "prettier src --check",
-    "autofix": "yarn format --write && yarn lint --fix"
+    "lint": "yarn global:lint",
+    "format": "yarn global:format",
+    "autofix": "yarn global:autofix",
+    "test": "echo 'no tests in the example app!'"
   }
 }

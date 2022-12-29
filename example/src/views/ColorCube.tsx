@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import React, { useCallback, useState } from "react"
 import { MathboxSelection } from "mathbox"
 import * as MB from "mathbox-react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
@@ -10,11 +10,96 @@ const mathboxOptions = {
     klass: OrbitControls,
   },
 }
+interface FormValues {
+  opacity: number
+  size: number
+  width: number
+  height: number
+  depth: number
+}
+const defaultFormValues: FormValues = {
+  opacity: 0.75,
+  size: 4,
+  width: 16,
+  height: 16,
+  depth: 16,
+}
 
-export default function ColorCube() {
+interface ControlsFormProps {
+  onChange: (values: FormValues) => void
+}
+
+const ControlsForm: React.FC<ControlsFormProps> = ({ onChange }) => {
+  const { register, watch } = useForm<FormValues>()
+  const values = watch()
+  const onFormChange = useCallback(() => onChange(watch()), [onChange, watch])
+  return (
+    <form onChange={onFormChange}>
+      <label htmlFor="opacity">Opacity</label>
+      <span>{values.opacity}</span>
+      <input
+        id="opacity"
+        type="range"
+        min={0}
+        max={1}
+        step={0.01}
+        defaultValue={defaultFormValues.opacity}
+        {...register("opacity", { valueAsNumber: true })}
+      />
+      <label htmlFor="size">Size</label>
+      <span>{values.size}</span>
+      <input
+        id="size"
+        type="range"
+        min={1}
+        max={32}
+        step={1}
+        defaultValue={defaultFormValues.size}
+        {...register("size", { valueAsNumber: true })}
+      />
+      <label htmlFor="width">Width</label>
+      <span>{values.width}</span>
+      <input
+        id="width"
+        type="range"
+        min={1}
+        max={64}
+        step={1}
+        defaultValue={defaultFormValues.width}
+        {...register("width", { valueAsNumber: true })}
+      />
+      <label htmlFor="height">Height</label>
+      <span>{values.height}</span>
+      <input
+        id="height"
+        type="range"
+        min={1}
+        max={64}
+        step={1}
+        defaultValue={defaultFormValues.height}
+        {...register("height", { valueAsNumber: true })}
+      />
+
+      <label htmlFor="depth">Depth</label>
+      <span>{values.depth}</span>
+      <input
+        id="depth"
+        type="range"
+        min={1}
+        max={64}
+        step={1}
+        defaultValue={defaultFormValues.depth}
+        {...register("depth", { valueAsNumber: true })}
+      />
+    </form>
+  )
+}
+
+
+const ColorCube: React.FC = () => {
   const [formValues, setFormValues] = useState<FormValues>(defaultFormValues)
   const setup = useCallback((mathbox: MathboxSelection<"root"> | null) => {
-    // @ts-expect-error
+    // @ts-expect-error useful for debugging
     window.mathbox = mathbox
   }, [])
   return (
@@ -56,91 +141,4 @@ export default function ColorCube() {
   )
 }
 
-interface FormValues {
-  opacity: number
-  size: number
-  width: number
-  height: number
-  depth: number
-}
-const defaultFormValues: FormValues = {
-  opacity: 0.75,
-  size: 4,
-  width: 16,
-  height: 16,
-  depth: 16,
-}
-
-interface ControlsFormProps {
-  onChange: (values: FormValues) => void
-}
-
-function ControlsForm({ onChange }: ControlsFormProps) {
-  const { register, watch } = useForm<FormValues>()
-  const values = watch()
-  const onFormChange = useCallback(() => onChange(watch()), [onChange, watch])
-  return (
-    <form onChange={onFormChange}>
-      <>
-        <label>Opacity</label>
-        <span>{values.opacity}</span>
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step={0.01}
-          defaultValue={defaultFormValues.opacity}
-          {...register("opacity", { valueAsNumber: true })}
-        />
-      </>
-      <>
-        <label>Size</label>
-        <span>{values.size}</span>
-        <input
-          type="range"
-          min={1}
-          max={32}
-          step={1}
-          defaultValue={defaultFormValues.size}
-          {...register("size", { valueAsNumber: true })}
-        />
-      </>
-      <>
-        <label>Width</label>
-        <span>{values.width}</span>
-        <input
-          type="range"
-          min={1}
-          max={64}
-          step={1}
-          defaultValue={defaultFormValues.width}
-          {...register("width", { valueAsNumber: true })}
-        />
-      </>
-      <>
-        <label>Height</label>
-        <span>{values.height}</span>
-        <input
-          type="range"
-          min={1}
-          max={64}
-          step={1}
-          defaultValue={defaultFormValues.height}
-          {...register("height", { valueAsNumber: true })}
-        />
-      </>
-      <>
-        <label>Depth</label>
-        <span>{values.depth}</span>
-        <input
-          type="range"
-          min={1}
-          max={64}
-          step={1}
-          defaultValue={defaultFormValues.depth}
-          {...register("depth", { valueAsNumber: true })}
-        />
-      </>
-    </form>
-  )
-}
+export default ColorCube

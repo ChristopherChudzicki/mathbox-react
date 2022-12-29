@@ -12,7 +12,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18.8.0"
-      - run: corepack enable
       - run: yarn install --immutable
       - run: yarn format
       - run: yarn lint

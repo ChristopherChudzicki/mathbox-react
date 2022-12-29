@@ -12,7 +12,7 @@
     "build-storybook": "build-storybook",
     "storybook": "start-storybook -p 6006",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
-    "format": "prettier src",
+    "format": "prettier src --check",
     "autofix": "npm run format -- --write && npm run lint -- --fix",
     "prepack": "npm run build",
     "test": "jest"
@@ -61,6 +61,7 @@
     "three": ">=0.118.0"
   },
   "dependencies": {
+    "eslint": "^8.30.0",
     "lodash": "^4.17.21"
   }
 }

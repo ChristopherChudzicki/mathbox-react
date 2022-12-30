@@ -25,10 +25,14 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        include: "./src/**/*",
+        exclude: ["**/*.stories.*", "**/*.spec.*", "src/stories/*"],
+      }),
       terser(),
     ],
-    external: ["react", "react-dom", "styled-components"],
+    external: ["react", "react-dom"],
   },
   {
     input: "build/esm/index.d.ts",

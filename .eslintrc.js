@@ -48,6 +48,12 @@ module.exports = {
         },
       },
     ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        assert: "either"
+      }
+    ]
   },
   settings: {},
   overrides: [
@@ -67,6 +73,6 @@ module.exports = {
     },
   ],
   parserOptions: {
-    project: "./tsconfig.base.json",
-  },
+    project: ["./mathbox-react/tsconfig.json", "./examples/tsconfig.json"]
+  }
 }

@@ -8,7 +8,6 @@ export const isEvaluateableFunc = (argSymbols: string[], dimsOut: number) => {
   return (text: string) => {
     try {
       const funcText = `f(${argSymbols}) = ${text}`
-      console.log(funcText)
       const f = math.evaluate(funcText)
       const args = argSymbols.map(() => 0)
       const out = f(...args)
@@ -19,9 +18,9 @@ export const isEvaluateableFunc = (argSymbols: string[], dimsOut: number) => {
   }
 }
 
-const compile = memoizeOne((text: string): math.EvalFunction => {
-  return math.compile(text)
-})
+const compile = memoizeOne(
+  (text: string): math.EvalFunction => math.compile(text)
+)
 
 export const textToAreaEmitter = (
   text: string,

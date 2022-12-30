@@ -13,5 +13,5 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["build", "node_modules"]
 }

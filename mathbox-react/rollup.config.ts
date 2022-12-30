@@ -3,8 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import { terser } from "rollup-plugin-terser";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import packageJson from "./package.json";
+import packageJson from "./package.json" assert { type: "json" };
 
 export default [
   {
@@ -22,7 +21,6 @@ export default [
       },
     ],
     plugins: [
-      peerDepsExternal(),
       resolve(),
       commonjs(),
       typescript({
@@ -32,11 +30,15 @@ export default [
       }),
       terser(),
     ],
-    external: ["react", "react-dom"],
+    external: ["react", "mathbox", "three"],
   },
   {
-    input: "build/esm/index.d.ts",
-    output: [{ file: "build/index.d.ts", format: "esm" }],
+    input: "build/esm/types/index.d.ts",
+    output: [{
+      file: "build/index.d.ts",
+      format: "esm",
+      
+    }],
     plugins: [dts()],
   },
 ];

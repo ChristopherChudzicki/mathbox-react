@@ -2567,22 +2567,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:23.0.0":
-  version: 23.0.0
-  resolution: "@rollup/plugin-commonjs@npm:23.0.0"
+"@rollup/plugin-commonjs@npm:23.0.7":
+  version: 23.0.7
+  resolution: "@rollup/plugin-commonjs@npm:23.0.7"
   dependencies:
-    "@rollup/pluginutils": ^4.2.1
+    "@rollup/pluginutils": ^5.0.1
     commondir: ^1.0.1
     estree-walker: ^2.0.2
     glob: ^8.0.3
     is-reference: 1.2.1
-    magic-string: ^0.26.4
+    magic-string: ^0.27.0
   peerDependencies:
     rollup: ^2.68.0||^3.0.0
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: a8b23ae4c6dc67d13149908444a5eab1375d63b5e5a22f48acd024cd67568cf90524700df76f078e4238e9ffab27ccd29b620625e55cbc50b3780c8f7159b5eb
+  checksum: 01d90947bd4aa664c568cec172399825921f29afc035a6d8aec153868ab151ce7901ad56a101c76655e31b21567ddc70313c4bca476685b872218f041757a8c9
   languageName: node
   linkType: hard
 
@@ -11840,7 +11840,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.26.4, magic-string@npm:^0.26.7":
+"magic-string@npm:^0.26.7":
   version: 0.26.7
   resolution: "magic-string@npm:0.26.7"
   dependencies:
@@ -11978,7 +11978,7 @@ __metadata:
   dependencies:
     "@babel/core": 7.19.3
     "@babel/preset-env": 7.19.4
-    "@rollup/plugin-commonjs": 23.0.0
+    "@rollup/plugin-commonjs": 23.0.7
     "@rollup/plugin-node-resolve": 15.0.0
     "@rollup/plugin-typescript": ^10.0.1
     "@storybook/addon-actions": 6.5.12

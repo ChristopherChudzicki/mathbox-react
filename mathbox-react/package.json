@@ -1,8 +1,13 @@
 {
   "name": "mathbox-react",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "React wrapper for Mathbox",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristopherChudzicki/mathbox-react",
+    "directory": "mathbox-react"
+  },
   "author": "Chris Chudzicki",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",

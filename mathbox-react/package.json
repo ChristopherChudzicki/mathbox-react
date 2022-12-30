@@ -16,8 +16,8 @@
     "build"
   ],
   "scripts": {
-    "build": "rm -rf build && rollup --config",
-    "build-watch": "rollup --config --watch",
+    "build": "rm -rf build && rollup --config rollup.config.ts --configPlugin typescript",
+    "build-watch": "rollup --config rollup.config.ts --configPlugin typescript --watch",
     "storybook": "start-storybook -p 6006",
     "lint": "yarn global:lint",
     "format": "yarn global:format",
@@ -30,7 +30,7 @@
     "@babel/preset-env": "7.19.4",
     "@rollup/plugin-commonjs": "23.0.0",
     "@rollup/plugin-node-resolve": "15.0.0",
-    "@rollup/plugin-typescript": "9.0.1",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@storybook/addon-actions": "6.5.12",
     "@storybook/addon-essentials": "6.5.12",
     "@storybook/addon-interactions": "6.5.12",
@@ -49,8 +49,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup": "3.9.0",
-    "rollup-plugin-dts": "4.2.3",
-    "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-dts": "5.1.0",
     "rollup-plugin-terser": "7.0.2",
     "three": "0.148.0",
     "ts-jest": "27.1.5"

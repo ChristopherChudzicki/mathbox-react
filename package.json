@@ -1,5 +1,6 @@
 {
   "name": "mathbox-react-root",
+  "private": true,
   "license": "ISC",
   "workspaces": [
     "./examples",

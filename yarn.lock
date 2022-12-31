@@ -2586,11 +2586,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:15.0.0":
-  version: 15.0.0
-  resolution: "@rollup/plugin-node-resolve@npm:15.0.0"
+"@rollup/plugin-node-resolve@npm:15.0.1":
+  version: 15.0.1
+  resolution: "@rollup/plugin-node-resolve@npm:15.0.1"
   dependencies:
-    "@rollup/pluginutils": ^4.2.1
+    "@rollup/pluginutils": ^5.0.1
     "@types/resolve": 1.20.2
     deepmerge: ^4.2.2
     is-builtin-module: ^3.2.0
@@ -2601,7 +2601,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 1be60a90cdb98ffd4cadb9005bc280a768c1eb608ea090e29710052be94118044e85ebccf73c615ef71f6d1201b1d3086f13e314406a3d2e741adf0c808fcaf8
+  checksum: 90e30b41626a15ebf02746a83d34b15f9fe9051ddc156a9bf785504f489947980b3bdeb7bf2f80828a9becfe472a03a96d0238328a3e3e2198a482fcac7eb3aa
   languageName: node
   linkType: hard
 
@@ -2621,16 +2621,6 @@ __metadata:
     tslib:
       optional: true
   checksum: d3e85674b5ff56c4376bbd79fd2baced3e988b7110d60b1f818eb344721f5605eaa3b56a1668631d210399db7188a7cc4790bb423ad9e56144d015fd1591ccc3
-  languageName: node
-  linkType: hard
-
-"@rollup/pluginutils@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "@rollup/pluginutils@npm:4.2.1"
-  dependencies:
-    estree-walker: ^2.0.1
-    picomatch: ^2.2.2
-  checksum: 6bc41f22b1a0f1efec3043899e4d3b6b1497b3dea4d94292d8f83b4cf07a1073ecbaedd562a22d11913ff7659f459677b01b09e9598a98936e746780ecc93a12
   languageName: node
   linkType: hard
 
@@ -8473,7 +8463,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"estree-walker@npm:^2.0.1, estree-walker@npm:^2.0.2":
+"estree-walker@npm:^2.0.2":
   version: 2.0.2
   resolution: "estree-walker@npm:2.0.2"
   checksum: 6151e6f9828abe2259e57f5fd3761335bb0d2ebd76dc1a01048ccee22fabcfef3c0859300f6d83ff0d1927849368775ec5a6d265dde2f6de5a1be1721cd94efc
@@ -11979,7 +11969,7 @@ __metadata:
     "@babel/core": 7.19.3
     "@babel/preset-env": 7.19.4
     "@rollup/plugin-commonjs": 23.0.7
-    "@rollup/plugin-node-resolve": 15.0.0
+    "@rollup/plugin-node-resolve": 15.0.1
     "@rollup/plugin-typescript": ^10.0.1
     "@storybook/addon-actions": 6.5.12
     "@storybook/addon-essentials": 6.5.12
@@ -13397,7 +13387,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.2, picomatch@npm:^2.2.3, picomatch@npm:^2.3.0, picomatch@npm:^2.3.1":
+"picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.3, picomatch@npm:^2.3.0, picomatch@npm:^2.3.1":
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
   checksum: 050c865ce81119c4822c45d3c84f1ced46f93a0126febae20737bd05ca20589c564d6e9226977df859ed5e03dc73f02584a2b0faad36e896936238238b0446cf

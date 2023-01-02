@@ -41,7 +41,7 @@
     "@types/jest": "27.5.2",
     "@types/lodash": "4.14.191",
     "@types/react": "18.0.26",
-    "@types/three": "0.147.0",
+    "@types/three": "0.147.1",
     "babel-jest": "27.5.1",
     "babel-loader": "8.2.5",
     "jest": "27.5.1",

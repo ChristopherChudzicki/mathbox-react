@@ -4380,12 +4380,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:0.147.0":
-  version: 0.147.0
-  resolution: "@types/three@npm:0.147.0"
+"@types/three@npm:0.147.1":
+  version: 0.147.1
+  resolution: "@types/three@npm:0.147.1"
   dependencies:
     "@types/webxr": "*"
-  checksum: 34c1e2a7a46921c4b88248ebe846957934e7daf78d0c7eda74266e3274d65694324c7cab379a22d05f34dd2d9a314b84a87640952b776404725d49478c7030ec
+  checksum: 7ba64eb1cc0922a5edbad21bff71fd7a87a4a67e643edeacc7790097071b2b6b97b34e47137d305e48607d4895cf94eef5d8be366489788dd85fcd4795008cd1
   languageName: node
   linkType: hard
 
@@ -11963,7 +11963,7 @@ __metadata:
     "@types/jest": 27.5.2
     "@types/lodash": 4.14.191
     "@types/react": 18.0.26
-    "@types/three": 0.147.0
+    "@types/three": 0.147.1
     babel-jest: 27.5.1
     babel-loader: 8.2.5
     jest: 27.5.1

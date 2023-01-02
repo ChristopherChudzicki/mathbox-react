@@ -40,7 +40,7 @@
     "@testing-library/react": "13.4.0",
     "@types/jest": "27.5.2",
     "@types/lodash": "4.14.191",
-    "@types/react": "18.0.21",
+    "@types/react": "18.0.26",
     "@types/three": "0.147.0",
     "babel-jest": "27.5.1",
     "babel-loader": "8.2.5",

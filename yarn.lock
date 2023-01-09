@@ -11615,15 +11615,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.26.7":
-  version: 0.26.7
-  resolution: "magic-string@npm:0.26.7"
-  dependencies:
-    sourcemap-codec: ^1.4.8
-  checksum: 89b0d60cbb32bbf3d1e23c46ea93db082d18a8230b972027aecb10a40bba51be519ecce0674f995571e3affe917b76b09f59d8dbc9a1b2c9c4102a2b6e8a2b01
-  languageName: node
-  linkType: hard
-
 "magic-string@npm:^0.27.0":
   version: 0.27.0
   resolution: "magic-string@npm:0.27.0"
@@ -11775,7 +11766,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     rollup: 3.9.1
-    rollup-plugin-dts: 5.1.0
+    rollup-plugin-dts: 5.1.1
     rollup-plugin-terser: 7.0.2
     three: 0.148.0
     ts-jest: 27.1.5
@@ -14374,19 +14365,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-dts@npm:5.1.0":
-  version: 5.1.0
-  resolution: "rollup-plugin-dts@npm:5.1.0"
+"rollup-plugin-dts@npm:5.1.1":
+  version: 5.1.1
+  resolution: "rollup-plugin-dts@npm:5.1.1"
   dependencies:
     "@babel/code-frame": ^7.18.6
-    magic-string: ^0.26.7
+    magic-string: ^0.27.0
   peerDependencies:
     rollup: ^3.0.0
     typescript: ^4.1
   dependenciesMeta:
     "@babel/code-frame":
       optional: true
-  checksum: 74bcee3076f2689272f240227e6c08a7486bc1f4451a2495ea3c1408ac96cbc034bdc88f584a926d8593e06d2a28e5167b2cbc3a85310e1c94fd35ddbc935be0
+  checksum: 12de87d537cf10f1808d6e6304c5f0b17620456b1ef0f4dfb80d2aa82d4fa5a40ebcf1c99bca840578dd53315696efcf0825b731707102540013edadcdd529f3
   languageName: node
   linkType: hard
 
@@ -14990,13 +14981,6 @@ __metadata:
   version: 0.7.4
   resolution: "source-map@npm:0.7.4"
   checksum: 01cc5a74b1f0e1d626a58d36ad6898ea820567e87f18dfc9d24a9843a351aaa2ec09b87422589906d6ff1deed29693e176194dc88bcae7c9a852dc74b311dbf5
-  languageName: node
-  linkType: hard
-
-"sourcemap-codec@npm:^1.4.8":
-  version: 1.4.8
-  resolution: "sourcemap-codec@npm:1.4.8"
-  checksum: b57981c05611afef31605732b598ccf65124a9fcb03b833532659ac4d29ac0f7bfacbc0d6c5a28a03e84c7510e7e556d758d0bb57786e214660016fb94279316
   languageName: node
   linkType: hard
 

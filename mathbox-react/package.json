@@ -60,6 +60,8 @@
     "three": ">=0.118.0"
   },
   "dependencies": {
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "lodash": "^4.17.21"
   }
 }

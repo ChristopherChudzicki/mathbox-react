@@ -2,7 +2,7 @@
   "name": "examples",
   "private": true,
   "dependencies": {
-    "mathbox": "2.2.1",
+    "mathbox": "^2.2.1",
     "mathbox-react": "workspace:*",
     "mathjs": "10.5.2",
     "memoize-one": "6.0.0",

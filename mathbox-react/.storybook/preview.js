@@ -1,4 +1,4 @@
-import "mathbox/build/mathbox.css";
+import "mathbox/mathbox.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

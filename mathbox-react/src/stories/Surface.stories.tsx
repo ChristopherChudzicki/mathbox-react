@@ -21,14 +21,20 @@ export default {
 
 const Template: Story<React.ComponentProps<typeof Surface>> = (args) => (
   <Mathbox containerStyle={{ height: 450 }}>
-    <Cartesian range={[[-5, 5], [-2, 2], [-5, 5]]}>
+    <Cartesian
+      range={[
+        [-5, 5],
+        [-2, 2],
+        [-5, 5],
+      ]}
+    >
       <Grid axes="xz" />
       <Area
         width={64}
         height={64}
         axes={["x", "z"]}
-        expr={(emit, x, z, i, j ,t) => {
-          const y = Math.sin(x -t) * Math.cos(z - t)
+        expr={(emit, x, z, i, j, t) => {
+          const y = Math.sin(x - t) * Math.cos(z - t)
           emit(x, y, z)
         }}
       />

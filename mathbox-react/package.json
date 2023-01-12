@@ -1,6 +1,6 @@
 {
   "name": "mathbox-react",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "description": "React wrapper for Mathbox",
   "license": "ISC",
   "repository": {
@@ -35,6 +35,8 @@
     "@storybook/addon-essentials": "6.5.15",
     "@storybook/addon-interactions": "6.5.15",
     "@storybook/addon-links": "6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "6.5.15",
     "@storybook/testing-library": "0.0.13",
     "@testing-library/react": "13.4.0",
@@ -45,7 +47,7 @@
     "babel-jest": "27.5.1",
     "babel-loader": "9.1.2",
     "jest": "27.5.1",
-    "mathbox": "2.2.1",
+    "mathbox": "2.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup": "3.9.1",
@@ -55,13 +57,11 @@
     "ts-jest": "27.1.5"
   },
   "peerDependencies": {
-    "mathbox": "^2.2.1",
+    "mathbox": "^2.3.0",
     "react": "^17.0.2 || ^18.0.0",
     "three": ">=0.118.0"
   },
   "dependencies": {
-    "@storybook/builder-webpack5": "^6.5.15",
-    "@storybook/manager-webpack5": "^6.5.15",
     "lodash": "^4.17.21"
   }
 }

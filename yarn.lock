@@ -11979,7 +11979,7 @@ __metadata:
     mathbox: 2.3.0
     react: 18.2.0
     react-dom: 18.2.0
-    rollup: 3.9.1
+    rollup: 3.10.0
     rollup-plugin-dts: 5.1.1
     rollup-plugin-terser: 7.0.2
     three: 0.148.0
@@ -14714,7 +14714,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:3.9.1, rollup@npm:^3.7.0":
+"rollup@npm:3.10.0":
+  version: 3.10.0
+  resolution: "rollup@npm:3.10.0"
+  dependencies:
+    fsevents: ~2.3.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: 31a882689c58d084ac36362aeaf2422dc4b80d671bd88c856693c37d63a26ddac9b9819dfba7f79c2d50d5207868b0e3d75f728fe551bbc347cf5dedf8ece18e
+  languageName: node
+  linkType: hard
+
+"rollup@npm:^3.7.0":
   version: 3.9.1
   resolution: "rollup@npm:3.9.1"
   dependencies:

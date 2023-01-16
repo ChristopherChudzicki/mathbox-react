@@ -3,31 +3,19 @@
   "private": true,
   "license": "ISC",
   "workspaces": [
-    "./examples",
-    "./mathbox-react"
+    "packages/*"
   ],
   "devDependencies": {
-    "concurrently": "^7.6.0",
-    "eslint": "^8.30.0",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-config-airbnb-typescript": "17.0.0",
-    "eslint-config-prettier": "8.6.0",
-    "eslint-config-react-app": "7.0.1",
-    "eslint-import-resolver-typescript": "3.5.3",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.8.1",
-    "typescript": "^4.9.4"
+    "concurrently": "^7.6.0"
   },
   "scripts": {
     "examples": "./scripts/run_examples.sh",
-    "lint": "yarn workspaces foreach run lint",
-    "format": "yarn workspaces foreach run format",
-    "test": "yarn workspaces foreach run test",
-    "autofix": "yarn workspaces foreach run autofix",
-    "global:lint": "eslint \"$INIT_CWD/src/**/*.{ts,tsx}\" --max-warnings=0",
-    "global:format": "prettier $INIT_CWD/src --check",
-    "global:autofix": "cd $INIT_CWD && pwd && yarn global:format --write && yarn global:lint --fix"
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "build": "turbo run build"
   },
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.3.1",
+  "dependencies": {
+    "turbo": "^1.7.0"
+  }
 }

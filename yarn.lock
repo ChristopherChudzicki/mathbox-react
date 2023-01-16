@@ -1902,9 +1902,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "@eslint/eslintrc@npm:1.4.0"
+"@eslint/eslintrc@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "@eslint/eslintrc@npm:1.4.1"
   dependencies:
     ajv: ^6.12.4
     debug: ^4.3.2
@@ -1915,7 +1915,7 @@ __metadata:
     js-yaml: ^4.1.0
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
-  checksum: 73e39c833deafde8d8706e6fa9b52b6d99927c094ead8e405ea4174e8197ec24aac9ba88ae38cc8ad32eaccf07b9c7fc5dc70761d1fba6da41a928691447305f
+  checksum: cd3e5a8683db604739938b1c1c8b77927dc04fce3e28e0c88e7f2cd4900b89466baf83dfbad76b2b9e4d2746abdd00dd3f9da544d3e311633d8693f327d04cd7
   languageName: node
   linkType: hard
 
@@ -2269,6 +2269,29 @@ __metadata:
   checksum: 9d703b859cff5cd83b7308fd457a431387db5db96bd781a63bf48e183418dd9d3d44e76b9e4ae13237f6abeeb25d739ec9215c1d5bfdd08f66f750a50074a339
   languageName: node
   linkType: hard
+
+"@mathbox-react/eslint-config@workspace:*, @mathbox-react/eslint-config@workspace:packages/eslint-config":
+  version: 0.0.0-use.local
+  resolution: "@mathbox-react/eslint-config@workspace:packages/eslint-config"
+  dependencies:
+    eslint-config-airbnb: 19.0.4
+    eslint-config-airbnb-typescript: 17.0.0
+    eslint-config-prettier: 8.6.0
+    eslint-config-react-app: 7.0.1
+    eslint-import-resolver-typescript: 3.5.3
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-prettier: 4.2.1
+    prettier: 2.8.1
+  peerDependencies:
+    eslint: ^8.31.0
+  languageName: unknown
+  linkType: soft
+
+"@mathbox-react/tsconfig@workspace:*, @mathbox-react/tsconfig@workspace:packages/tsconfig":
+  version: 0.0.0-use.local
+  resolution: "@mathbox-react/tsconfig@workspace:packages/tsconfig"
+  languageName: unknown
+  linkType: soft
 
 "@mdx-js/mdx@npm:^1.6.22":
   version: 1.6.22
@@ -8290,11 +8313,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.30.0":
-  version: 8.30.0
-  resolution: "eslint@npm:8.30.0"
+"eslint@npm:^8.32.0":
+  version: 8.32.0
+  resolution: "eslint@npm:8.32.0"
   dependencies:
-    "@eslint/eslintrc": ^1.4.0
+    "@eslint/eslintrc": ^1.4.1
     "@humanwhocodes/config-array": ^0.11.8
     "@humanwhocodes/module-importer": ^1.0.1
     "@nodelib/fs.walk": ^1.2.8
@@ -8335,7 +8358,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: b7525bb465b342665c3b8bab7e114d514ef1bc4e79f211c919863f9c71767e7412ec82383a22614a92d159783f91101018817000f7c61ce69a5e7015280cafaf
+  checksum: 23c8fb3c57291eecd9c1448faf603226a8f885022a2cd96e303459bf72e39b7f54987c6fb948f0f9eecaf7085600e6eb0663482a35ea83da12e9f9141a22b91e
   languageName: node
   linkType: hard
 
@@ -8442,14 +8465,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"examples@workspace:examples":
+"examples@workspace:packages/examples":
   version: 0.0.0-use.local
-  resolution: "examples@workspace:examples"
+  resolution: "examples@workspace:packages/examples"
   dependencies:
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.9
     "@types/three": 0.148.0
     "@vitejs/plugin-react": ^3.0.0
+    eslint: ^8.32.0
     mathbox: ^2.3.0
     mathbox-react: "workspace:*"
     mathjs: 10.5.2
@@ -8459,6 +8483,7 @@ __metadata:
     react-hook-form: 7.31.1
     react-router-dom: 6.3.0
     three: 0.148.0
+    typescript: ^4.9.4
     vite: ^4.0.0
   languageName: unknown
   linkType: soft
@@ -11937,25 +11962,18 @@ __metadata:
   resolution: "mathbox-react-root@workspace:."
   dependencies:
     concurrently: ^7.6.0
-    eslint: ^8.30.0
-    eslint-config-airbnb: 19.0.4
-    eslint-config-airbnb-typescript: 17.0.0
-    eslint-config-prettier: 8.6.0
-    eslint-config-react-app: 7.0.1
-    eslint-import-resolver-typescript: 3.5.3
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-prettier: 4.2.1
-    prettier: 2.8.1
-    typescript: ^4.9.4
+    turbo: ^1.7.0
   languageName: unknown
   linkType: soft
 
-"mathbox-react@workspace:*, mathbox-react@workspace:mathbox-react":
+"mathbox-react@workspace:*, mathbox-react@workspace:packages/mathbox-react":
   version: 0.0.0-use.local
-  resolution: "mathbox-react@workspace:mathbox-react"
+  resolution: "mathbox-react@workspace:packages/mathbox-react"
   dependencies:
     "@babel/core": 7.20.12
     "@babel/preset-env": 7.20.2
+    "@mathbox-react/eslint-config": "workspace:*"
+    "@mathbox-react/tsconfig": "workspace:*"
     "@rollup/plugin-commonjs": 24.0.0
     "@rollup/plugin-node-resolve": 15.0.1
     "@rollup/plugin-typescript": ^11.0.0
@@ -11974,6 +11992,7 @@ __metadata:
     "@types/three": 0.148.0
     babel-jest: 27.5.1
     babel-loader: 9.1.2
+    eslint: ^8.32.0
     jest: 27.5.1
     lodash: ^4.17.21
     mathbox: 2.3.0
@@ -11984,6 +12003,7 @@ __metadata:
     rollup-plugin-terser: 7.0.2
     three: 0.148.0
     ts-jest: 27.1.5
+    typescript: ^4.9.4
   peerDependencies:
     mathbox: ^2.3.0
     react: ^17.0.2 || ^18.0.0
@@ -16269,6 +16289,77 @@ __metadata:
   version: 0.0.0
   resolution: "tty-browserify@npm:0.0.0"
   checksum: a06f746acc419cb2527ba19b6f3bd97b4a208c03823bfb37b2982629d2effe30ebd17eaed0d7e2fc741f3c4f2a0c43455bd5fb4194354b378e78cfb7ca687f59
+  languageName: node
+  linkType: hard
+
+"turbo-darwin-64@npm:1.7.0":
+  version: 1.7.0
+  resolution: "turbo-darwin-64@npm:1.7.0"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"turbo-darwin-arm64@npm:1.7.0":
+  version: 1.7.0
+  resolution: "turbo-darwin-arm64@npm:1.7.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"turbo-linux-64@npm:1.7.0":
+  version: 1.7.0
+  resolution: "turbo-linux-64@npm:1.7.0"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"turbo-linux-arm64@npm:1.7.0":
+  version: 1.7.0
+  resolution: "turbo-linux-arm64@npm:1.7.0"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"turbo-windows-64@npm:1.7.0":
+  version: 1.7.0
+  resolution: "turbo-windows-64@npm:1.7.0"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"turbo-windows-arm64@npm:1.7.0":
+  version: 1.7.0
+  resolution: "turbo-windows-arm64@npm:1.7.0"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"turbo@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "turbo@npm:1.7.0"
+  dependencies:
+    turbo-darwin-64: 1.7.0
+    turbo-darwin-arm64: 1.7.0
+    turbo-linux-64: 1.7.0
+    turbo-linux-arm64: 1.7.0
+    turbo-windows-64: 1.7.0
+    turbo-windows-arm64: 1.7.0
+  dependenciesMeta:
+    turbo-darwin-64:
+      optional: true
+    turbo-darwin-arm64:
+      optional: true
+    turbo-linux-64:
+      optional: true
+    turbo-linux-arm64:
+      optional: true
+    turbo-windows-64:
+      optional: true
+    turbo-windows-arm64:
+      optional: true
+  bin:
+    turbo: bin/turbo
+  checksum: effefebefeb7531bb33205e368b2b3571fee9e8face3530af25126d4162527f105a5fe7777509a99288326be3b6e28953c7ceacab2c2ef74abb0604c8ec9bbe7
   languageName: node
   linkType: hard
 

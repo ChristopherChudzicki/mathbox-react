@@ -33,11 +33,10 @@ export default [
     external: ["react", "mathbox", "three"],
   },
   {
-    input: "build/esm/types/index.d.ts",
+    input: "build/esm/src/index.d.ts",
     output: [{
       file: "build/index.d.ts",
-      format: "esm",
-      
+      format: "esm"
     }],
     plugins: [dts()],
   },

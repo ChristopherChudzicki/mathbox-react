@@ -6,7 +6,7 @@ import React, {
 } from "react"
 import { Color } from "three"
 import { mathBox, RootProps, MathboxSelection, MathBoxOptions } from "mathbox"
-import MathboxAPIContext from "./MathboxNodeContext"
+import MathboxAPIContext from "./MathboxAPIContext"
 import { WithChildren } from "./types"
 import { useDeepCompareMemo } from "./util"
 

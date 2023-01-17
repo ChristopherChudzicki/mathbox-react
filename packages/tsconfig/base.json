@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "strict": true,
+      "jsx": "react",
+      "module": "ESNext",
+      "declaration": true,
+      "sourceMap": true,
+      "skipLibCheck": true,
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true
+    },
+    "exclude": ["build", "node_modules"]
+  }
+  

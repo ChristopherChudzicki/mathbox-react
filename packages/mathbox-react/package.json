@@ -11,26 +11,24 @@
   "author": "Chris Chudzicki",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "types": "build/index.d.ts",
   "files": [
     "build"
   ],
   "scripts": {
-    "build": "rm -rf build && rollup --config rollup.config.ts --configPlugin typescript",
-    "build-watch": "rollup --config rollup.config.ts --configPlugin typescript --watch",
+    "build": "rm -rf ./build && yarn build-esm && yarn build-cjs",
+    "build-esm": "tsc",
+    "build-cjs": "tsc --project tsconfig.cjs.json",
+    "build-watch": "tsc --watch",
     "storybook": "start-storybook -p 6006",
-    "lint": "yarn global:lint",
-    "format": "yarn global:format",
-    "autofix": "yarn global:autofix",
+    "lint": "eslint \"**/*.ts?(x)\"",
     "prepack": "yarn build",
     "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "7.20.12",
     "@babel/preset-env": "7.20.2",
-    "@rollup/plugin-commonjs": "24.0.0",
-    "@rollup/plugin-node-resolve": "15.0.1",
-    "@rollup/plugin-typescript": "^11.0.0",
+    "@mathbox-react/eslint-config": "workspace:*",
+    "@mathbox-react/tsconfig": "workspace:*",
     "@storybook/addon-actions": "6.5.15",
     "@storybook/addon-essentials": "6.5.15",
     "@storybook/addon-interactions": "6.5.15",
@@ -46,15 +44,14 @@
     "@types/three": "0.148.0",
     "babel-jest": "27.5.1",
     "babel-loader": "9.1.2",
+    "eslint": "^8.32.0",
     "jest": "27.5.1",
     "mathbox": "2.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rollup": "3.10.0",
-    "rollup-plugin-dts": "5.1.1",
-    "rollup-plugin-terser": "7.0.2",
     "three": "0.148.0",
-    "ts-jest": "27.1.5"
+    "ts-jest": "27.1.5",
+    "typescript": "^4.9.4"
   },
   "peerDependencies": {
     "mathbox": "^2.3.0",

@@ -1,0 +1,7 @@
+{
+  "extends": "@mathbox-react/tsconfig/base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "./build/cjs",
+  },
+}

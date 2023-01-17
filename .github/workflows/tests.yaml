@@ -13,6 +13,5 @@ jobs:
         with:
           node-version: "18.12.1"
       - run: yarn install --immutable
-      - run: yarn format
       - run: yarn lint
       - run: yarn test

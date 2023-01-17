@@ -1,5 +1,6 @@
 node_modules
 build
+dist
 
 # See https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
 .pnp.*
@@ -9,3 +10,6 @@ build
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# turborepo
+.turbo

@@ -12,6 +12,7 @@ module.exports = {
   ],
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
+    "prettier/prettier": "error",
     "import/no-extraneous-dependencies": [
       "error",
       {

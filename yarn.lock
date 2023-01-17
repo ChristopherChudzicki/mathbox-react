@@ -11897,6 +11897,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     three: 0.148.0
+    threestrap-react: "workspace:^"
     ts-jest: 27.1.5
     typescript: ^4.9.4
   peerDependencies:
@@ -15865,6 +15866,21 @@ __metadata:
   checksum: 3f6359585c006c6f78b2fc1adeb90559d9b7cd6daf5cf916e81494ff228f4a9beffe37136bd8d5b0afbf377ac070b70624245bec2e9ee557035e2c485ce05197
   languageName: node
   linkType: hard
+
+"threestrap-react@workspace:^, threestrap-react@workspace:packages/threestrap-react":
+  version: 0.0.0-use.local
+  resolution: "threestrap-react@workspace:packages/threestrap-react"
+  dependencies:
+    "@types/react": 18.0.26
+    "@types/three": 0.148.0
+    eslint: ^8.32.0
+    typescript: ^4.9.4
+  peerDependencies:
+    react: ^17.0.2 || ^18.0.0
+    three: ">=0.118.0"
+    threestrap: ^0.5.1
+  languageName: unknown
+  linkType: soft
 
 "threestrap@npm:^0.5.1":
   version: 0.5.1

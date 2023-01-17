@@ -11,13 +11,14 @@
   "author": "Chris Chudzicki",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "types": "build/index.d.ts",
   "files": [
     "build"
   ],
   "scripts": {
-    "build": "rm -rf build && rollup --config rollup.config.ts --configPlugin typescript",
-    "build-watch": "rollup --config rollup.config.ts --configPlugin typescript --watch",
+    "build": "rm -rf ./build && yarn build-esm && yarn build-cjs",
+    "build-esm": "tsc",
+    "build-cjs": "tsc --project tsconfig.cjs.json",
+    "build-watch": "tsc --watch",
     "storybook": "start-storybook -p 6006",
     "lint": "eslint \"**/*.ts?(x)\"",
     "prepack": "yarn build",
@@ -28,9 +29,6 @@
     "@babel/preset-env": "7.20.2",
     "@mathbox-react/eslint-config": "workspace:*",
     "@mathbox-react/tsconfig": "workspace:*",
-    "@rollup/plugin-commonjs": "24.0.0",
-    "@rollup/plugin-node-resolve": "15.0.1",
-    "@rollup/plugin-typescript": "^11.0.0",
     "@storybook/addon-actions": "6.5.15",
     "@storybook/addon-essentials": "6.5.15",
     "@storybook/addon-interactions": "6.5.15",
@@ -51,9 +49,6 @@
     "mathbox": "2.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rollup": "3.10.0",
-    "rollup-plugin-dts": "5.1.1",
-    "rollup-plugin-terser": "7.0.2",
     "three": "0.148.0",
     "ts-jest": "27.1.5",
     "typescript": "^4.9.4"

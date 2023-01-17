@@ -5,11 +5,9 @@
       "jsx": "react",
       "module": "ESNext",
       "declaration": true,
-      "declarationDir": "types",
       "sourceMap": true,
-      "outDir": "build",
+      "skipLibCheck": true,
       "moduleResolution": "node",
-      "emitDeclarationOnly": true,
       "allowSyntheticDefaultImports": true,
       "forceConsistentCasingInFileNames": true,
       "resolveJsonModule": true

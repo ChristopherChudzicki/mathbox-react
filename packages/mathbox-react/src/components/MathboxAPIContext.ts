@@ -9,7 +9,9 @@ const MathboxAPIContext = createContext<MathboxSelection<NodeType> | null>(null)
 const useMathbox = () => {
   const selection = useContext(MathboxAPIContext)
   if (!selection) {
-    throw new Error('useMathbox must be used within Mathbox or ContainedMathbox')
+    throw new Error(
+      "useMathbox must be used within Mathbox or ContainedMathbox"
+    )
   }
   return selection
 }

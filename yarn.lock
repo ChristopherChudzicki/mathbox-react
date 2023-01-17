@@ -8400,7 +8400,7 @@ __metadata:
     "@types/three": 0.148.0
     "@vitejs/plugin-react": ^3.0.0
     eslint: ^8.32.0
-    mathbox: ^2.3.0
+    mathbox: ^2.3.1-rc1
     mathbox-react: "workspace:*"
     mathjs: 10.5.2
     memoize-one: 6.0.0
@@ -11900,7 +11900,7 @@ __metadata:
     ts-jest: 27.1.5
     typescript: ^4.9.4
   peerDependencies:
-    mathbox: ^2.3.0
+    mathbox: ^2.3.1-rc1
     react: ^17.0.2 || ^18.0.0
     three: ">=0.118.0"
   languageName: unknown
@@ -11920,9 +11920,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mathbox@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "mathbox@npm:2.3.0"
+"mathbox@npm:^2.3.1-rc1":
+  version: 2.3.1-rc1
+  resolution: "mathbox@npm:2.3.1-rc1"
   dependencies:
     css-select: ^4.2.1
     lodash: ^4.17.21
@@ -11930,7 +11930,7 @@ __metadata:
     threestrap: ^0.5.1
   peerDependencies:
     three: ">=0.118.0"
-  checksum: a70e3e6f5bd63df5478301bf3f9b14b6ef4a7f04bc6f494b20919cf02634c754578c03e5e99f2acb8c2b5e6ec008ba61a077faba104bfe5b535d35c2f0e3cc66
+  checksum: 154dc9e20a56a4ce232dd9d10a1fa6a8b795af3144a2f52873659d74c731f7b988fc674ae5233ab39d52bfe14a9d3e055208256d87b7ac4550cc71aaafb5144c
   languageName: node
   linkType: hard
 

@@ -4,10 +4,10 @@
       "strict": true,
       "jsx": "react",
       "module": "ESNext",
+      "moduleResolution": "node16",
       "declaration": true,
       "sourceMap": true,
       "skipLibCheck": true,
-      "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
       "forceConsistentCasingInFileNames": true,
       "resolveJsonModule": true

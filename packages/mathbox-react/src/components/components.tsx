@@ -7,7 +7,7 @@ import React, {
   useImperativeHandle,
 } from "react"
 import { Props, NodeType, MathboxSelection } from "mathbox"
-import MathboxAPIContext from "./MathboxNodeContext"
+import MathboxAPIContext from "./MathboxAPIContext"
 import { WithChildren } from "./types"
 import {
   isRootDestroyed,

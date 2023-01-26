@@ -10,7 +10,16 @@
   },
   "author": "Chris Chudzicki",
   "main": "build/cjs/index.js",
-  "module": "build/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./build/esm/index.js",
+      "require": "./build/cjs/index.js"
+    },
+    "./threestrap": {
+      "import": "./build/esm/threestrap/index.js",
+      "require": "./build/cjs/threestrap/index.js"
+    }
+  },
   "files": [
     "build"
   ],
@@ -54,7 +63,7 @@
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
-    "mathbox": "^2.3.0",
+    "mathbox": "^2.3.1",
     "react": "^17.0.2 || ^18.0.0",
     "three": ">=0.118.0"
   },

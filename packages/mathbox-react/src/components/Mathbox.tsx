@@ -9,6 +9,7 @@ import { mathBox, RootProps, MathboxSelection, MathBoxOptions } from "mathbox"
 import MathboxAPIContext from "./MathboxAPIContext"
 import { WithChildren } from "./types"
 import { useDeepCompareMemo } from "./util"
+import ThreestrapContext from "../threestrap/ThreestrapContext"
 
 type Props = WithChildren<
   {
@@ -54,9 +55,13 @@ const Mathbox = (
 
   useImperativeHandle(ref, () => selection, [selection])
   return (
-    <MathboxAPIContext.Provider value={selection}>
-      {children}
-    </MathboxAPIContext.Provider>
+    selection && (
+      <MathboxAPIContext.Provider value={selection}>
+        <ThreestrapContext.Provider value={selection.three}>
+          {children}
+        </ThreestrapContext.Provider>
+      </MathboxAPIContext.Provider>
+    )
   )
 }
 

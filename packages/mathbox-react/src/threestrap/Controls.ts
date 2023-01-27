@@ -9,26 +9,59 @@ type OrbitControlsProps = {
   enablePan?: boolean
   enableRotate?: boolean
   enableZoom?: boolean
+  onStart?: (event: { type: "end"; target: OrbitControls }) => void
+  onEnd?: (event: { type: "end"; target: OrbitControls }) => void
 }
 type ControlsProps = OrbitControlsProps
 
 const ALLOWED_CONTROLS = ["orbit"]
 
-const useOrbitControls = (threestrap: Threestrap, props: ControlsProps) => {
+const useOrbitControls = (
+  threestrap: Threestrap,
+  { type, enablePan, enableRotate, enableZoom, onStart, onEnd }: ControlsProps
+) => {
   useEffect(() => {
-    if (props.type !== "orbit") return
+    if (type !== "orbit") return
     if (!threestrap.controls) return
     const controls = threestrap.controls as OrbitControls
-    if (props.enablePan !== undefined) {
-      controls.enablePan = props.enablePan
+    if (enablePan !== undefined) {
+      controls.enablePan = enablePan
     }
-    if (props.enableZoom !== undefined) {
-      controls.enableZoom = props.enableZoom
+    if (enableZoom !== undefined) {
+      controls.enableZoom = enableZoom
     }
-    if (props.enableRotate !== undefined) {
-      controls.enableRotate = props.enableRotate
+    if (enableRotate !== undefined) {
+      controls.enableRotate = enableRotate
     }
-  })
+  }, [type, enablePan, enableRotate, enableZoom, threestrap.controls])
+
+  useEffect(() => {
+    if (type !== "orbit") return () => {}
+    if (!threestrap.controls) return () => {}
+    const controls = threestrap.controls as OrbitControls
+    if (onStart) {
+      controls.addEventListener("start", onStart)
+    }
+    return () => {
+      if (onStart) {
+        controls.removeEventListener("start", onStart)
+      }
+    }
+  }, [type, onStart, threestrap.controls])
+
+  useEffect(() => {
+    if (type !== "orbit") return () => {}
+    if (!threestrap.controls) return () => {}
+    const controls = threestrap.controls as OrbitControls
+    if (onEnd) {
+      controls.addEventListener("end", onEnd)
+    }
+    return () => {
+      if (onEnd) {
+        controls.removeEventListener("end", onEnd)
+      }
+    }
+  }, [type, onEnd, threestrap.controls])
 }
 
 const Controls: React.FC<ControlsProps> = (props) => {

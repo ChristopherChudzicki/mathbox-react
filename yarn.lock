@@ -4816,15 +4816,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:0.150.0":
-  version: 0.150.0
-  resolution: "@types/three@npm:0.150.0"
+"@types/three@npm:0.150.1":
+  version: 0.150.1
+  resolution: "@types/three@npm:0.150.1"
   dependencies:
     "@types/stats.js": "*"
     "@types/webxr": "*"
     fflate: ~0.6.9
     lil-gui: ~0.17.0
-  checksum: 5adee83f58c8ae5cc86b37edc8633456318eb4c83c3fe9c6420d2cacac05dd3b5b721132765ac79155069694cf927a366a210be318b9356885a2203d1feb87e8
+  checksum: 6cb4656461643db49bb676849e8957d537adf574bd00effed7be06e22a012d084b8f7272d577ce810c3015a183fe203b7c4a4d7f2485f348ebf056fbeb46c15a
   languageName: node
   linkType: hard
 
@@ -12519,7 +12519,7 @@ __metadata:
     "@types/jest": 27.5.2
     "@types/lodash": 4.14.192
     "@types/react": 18.0.31
-    "@types/three": 0.150.0
+    "@types/three": 0.150.1
     babel-jest: 27.5.1
     babel-loader: 9.1.2
     eslint: ^8.32.0
@@ -12528,7 +12528,7 @@ __metadata:
     mathbox: 2.3.1
     react: 18.2.0
     react-dom: 18.2.0
-    three: 0.150.1
+    three: 0.151.3
     ts-jest: 27.1.5
     typescript: ^5.0.0
   peerDependencies:
@@ -16484,10 +16484,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:0.150.1":
-  version: 0.150.1
-  resolution: "three@npm:0.150.1"
-  checksum: b12a92a681a30e62640d90bdf074d039c05d8294ad40f437e7e1807ce0e698ad6728878a1e72dad22bf05d7a359843ecea8739d05f2f13143bc3a4ecdfdbdd7b
+"three@npm:0.151.3":
+  version: 0.151.3
+  resolution: "three@npm:0.151.3"
+  checksum: cb6f10e4e409bbc4677d2128470c4e0bdb29f7879a77bc800180e30bda3527816c45b47ac10228f346cfc7501234457f63a87c1bdd5c3b6e2841d523e5d6eb79
   languageName: node
   linkType: hard
 

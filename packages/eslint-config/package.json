@@ -10,7 +10,7 @@
         "eslint-import-resolver-typescript": "3.5.3",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-prettier": "4.2.1",
-        "prettier": "2.8.1"
+        "prettier": "2.8.8"
     },
     "peerDependencies": {
         "eslint": "^8.31.0"

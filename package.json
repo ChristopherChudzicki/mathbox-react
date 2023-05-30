@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^8.0.0"
   },
   "scripts": {
     "examples": "./scripts/run_examples.sh",

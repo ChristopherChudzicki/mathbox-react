@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.22.1",
-    "@babel/preset-env": "7.22.2",
+    "@babel/preset-env": "7.22.4",
     "@mathbox-react/eslint-config": "workspace:*",
     "@mathbox-react/tsconfig": "workspace:*",
     "@storybook/addon-actions": "7.0.18",

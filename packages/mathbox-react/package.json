@@ -34,8 +34,8 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/core": "7.22.6",
-    "@babel/preset-env": "7.22.6",
+    "@babel/core": "7.22.8",
+    "@babel/preset-env": "7.22.7",
     "@mathbox-react/eslint-config": "workspace:*",
     "@mathbox-react/tsconfig": "workspace:*",
     "@storybook/addon-actions": "7.0.18",

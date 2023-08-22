@@ -47,7 +47,7 @@
     "@storybook/react": "7.0.18",
     "@storybook/testing-library": "0.2.0",
     "@testing-library/react": "14.0.0",
-    "@types/jest": "27.5.2",
+    "@types/jest": "29.5.4",
     "@types/lodash": "4.14.195",
     "@types/react": "18.2.15",
     "@types/three": "0.154.0",
@@ -59,7 +59,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "three": "0.154.0",
-    "ts-jest": "27.1.5",
+    "ts-jest": "29.1.1",
     "typescript": "^5.0.0"
   },
   "peerDependencies": {

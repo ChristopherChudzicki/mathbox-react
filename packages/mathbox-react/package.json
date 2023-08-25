@@ -48,7 +48,7 @@
     "@storybook/testing-library": "0.2.0",
     "@testing-library/react": "14.0.0",
     "@types/jest": "29.5.4",
-    "@types/lodash": "4.14.195",
+    "@types/lodash": "4.14.197",
     "@types/react": "18.2.15",
     "@types/three": "0.154.0",
     "babel-jest": "27.5.1",

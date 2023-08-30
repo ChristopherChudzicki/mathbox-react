@@ -6107,9 +6107,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:0.154.0":
-  version: 0.154.0
-  resolution: "@types/three@npm:0.154.0"
+"@types/three@npm:0.155.1":
+  version: 0.155.1
+  resolution: "@types/three@npm:0.155.1"
   dependencies:
     "@tweenjs/tween.js": ~18.6.4
     "@types/stats.js": "*"
@@ -6117,7 +6117,7 @@ __metadata:
     fflate: ~0.6.9
     lil-gui: ~0.17.0
     meshoptimizer: ~0.18.1
-  checksum: 623067f84e342afc2641b4e547a95d25882b01a108abd8987df6e3c9af5d83d710e13cc974174867c0298573c93b4e0f1b2233d9bab650a7c2ef3cbb73a5e842
+  checksum: dbe682fed53b59776d09140eec755677aedb49df6a16333a507f87a4ade2cbd4ea0fa46984e28425f3c3026d5eb9a8568e75a1a362fb4f1889427e4c6df4b640
   languageName: node
   linkType: hard
 
@@ -13410,7 +13410,7 @@ __metadata:
     "@types/jest": 29.5.4
     "@types/lodash": 4.14.197
     "@types/react": 18.2.21
-    "@types/three": 0.154.0
+    "@types/three": 0.155.1
     babel-jest: 27.5.1
     babel-loader: 9.1.3
     eslint: ^8.32.0
@@ -13419,7 +13419,7 @@ __metadata:
     mathbox: 2.3.1
     react: 18.2.0
     react-dom: 18.2.0
-    three: 0.154.0
+    three: 0.155.0
     ts-jest: 29.1.1
     typescript: ^5.0.0
   peerDependencies:
@@ -16890,10 +16890,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:0.154.0":
-  version: 0.154.0
-  resolution: "three@npm:0.154.0"
-  checksum: 90ad3cafef8b866641366977ab7189d56f7352c6cdc014cbab946544e42782ec4ea7e56b959b43590433a0fcdc4bd8f8029b18a75074ba10005182c5a73bcc88
+"three@npm:0.155.0":
+  version: 0.155.0
+  resolution: "three@npm:0.155.0"
+  checksum: 55de8af716686be2159b2ff407501ce2e6418b7d16a8dc57f3dcf9f08c4a6bedf0623fa8ddb67c1ae6f679d7ca53cfa0c64bab6b0577d6c467618389d5561211
   languageName: node
   linkType: hard
 

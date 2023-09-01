@@ -13451,7 +13451,7 @@ __metadata:
     mathbox: 2.3.1
     react: 18.2.0
     react-dom: 18.2.0
-    three: 0.155.0
+    three: 0.156.0
     ts-jest: 29.1.1
     typescript: ^5.0.0
   peerDependencies:
@@ -16922,10 +16922,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:0.155.0":
-  version: 0.155.0
-  resolution: "three@npm:0.155.0"
-  checksum: 55de8af716686be2159b2ff407501ce2e6418b7d16a8dc57f3dcf9f08c4a6bedf0623fa8ddb67c1ae6f679d7ca53cfa0c64bab6b0577d6c467618389d5561211
+"three@npm:0.156.0":
+  version: 0.156.0
+  resolution: "three@npm:0.156.0"
+  checksum: fdb6ff02360914d8662944f1d46547ce251f5dcb6bb948fadab6234a2e39fc45a7af8822825ee7bd8804ce2edbfb3b8cd608be8bbc1f937eb5bf63d74c6cf66a
   languageName: node
   linkType: hard
 

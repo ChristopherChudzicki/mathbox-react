@@ -1,6 +1,6 @@
 {
   "name": "mathbox-react",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React wrapper for Mathbox",
   "license": "ISC",
   "repository": {
@@ -50,7 +50,7 @@
     "@types/jest": "27.5.2",
     "@types/lodash": "4.14.195",
     "@types/react": "18.2.11",
-    "@types/three": "0.152.1",
+    "@types/three": "0.148.0",
     "babel-jest": "27.5.1",
     "babel-loader": "9.1.2",
     "eslint": "^8.32.0",

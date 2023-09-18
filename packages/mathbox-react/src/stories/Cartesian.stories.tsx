@@ -9,7 +9,7 @@ export default {
   component: Cartesian,
   argTypes: {
     range: {
-      type: "array",
+      type: "string",
       defaultValue: [
         [-1, 1],
         [-1, 1],
@@ -17,7 +17,7 @@ export default {
       ],
     },
     scale: {
-      type: "array",
+      type: "string",
       defaultValue: [1, 1, 1],
     },
   },

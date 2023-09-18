@@ -1,32 +1,35 @@
 module.exports = {
   extends: [
     "react-app",
-    "react-app/jest",
     "airbnb",
     "airbnb-typescript",
-    "prettier",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended", // this should come last
   ],
-  plugins: ["react", "@typescript-eslint", "prettier"],
+  plugins: ["react", "@typescript-eslint"],
   rules: {
-    "prettier/prettier": "error",
-    "import/no-extraneous-dependencies": [
-      "error",
+    "@typescript-eslint/naming-convention": [
+      "warn",
       {
-        devDependencies: [
-          "**/*.stories.*",
-          "**/*.spec.*",
-          "**/rollup.*",
-          "**/vite.*",
-        ],
+        selector: "parameter",
+        modifiers: ["unused"],
+        format: ["camelCase"],
+        leadingUnderscore: "allow", // do not require... it's annoying when required for object destructuring.
       },
     ],
-    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        varsIgnorePattern: "^_",
+        argsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+        ignoreRestSiblings: true,
+      },
+    ],
     "max-classes-per-file": "off",
-    "react/destructuring-assignment": "off",
     "react/function-component-definition": [
       "error",
       {
@@ -34,34 +37,49 @@ module.exports = {
         unnamedComponents: "arrow-function",
       },
     ],
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        ignoreRestSiblings: true,
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
-        caughtErrorsIgnorePattern: "^_",
-      },
+    "import/prefer-default-export": "off",
+    "react/destructuring-assignment": "off",
+    "no-param-reassign": [
+      "error",
+      { props: true, ignorePropertyModificationsFor: ["state"] },
     ],
-    "@typescript-eslint/naming-convention": [
+    "import/no-extraneous-dependencies": [
       "error",
       {
-        selector: "variable",
-        format: ["camelCase", "PascalCase", "UPPER_CASE"],
-        filter: {
-          regex: "^_",
-          match: false,
-        },
+        devDependencies: [
+          "**/__tests__/**/*.ts",
+          "**/*.spec.ts",
+          "**/*.spec.tsx",
+          "**/playwright.config.ts",
+          "**/vite.config.ts",
+          "**/*.stories.tsx",
+          "**/src/setupTests.ts",
+          "**/src/playwright/**",
+          "**/src/test_util/**/*.ts",
+          "**/src/test_util/**/*.tsx",
+        ],
       },
     ],
     "jsx-a11y/label-has-associated-control": [
-      "error",
+      2,
       {
-        assert: "either"
-      }
-    ]
+        assert: "either",
+      },
+    ],
   },
-  settings: {},
+  settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
+    "import/resolver": {
+      typescript: {
+        project: ["tsconfig.json"],
+      },
+      node: {
+        project: ["tsconfig.json"],
+      },
+    },
+  },
   overrides: [
     {
       files: ["**/*.ts?(x)"],
@@ -77,9 +95,14 @@ module.exports = {
         "import/no-anonymous-default-export": "off",
       },
     },
+    {
+      files: ["**/*.spec.*"],
+      excludedFiles: ["**/src/playwright/**"],
+      extends: ["react-app/jest"],
+    },
   ],
   parserOptions: {
-    project: ["./tsconfig.json", "./tsconfig.*.json"]
+    project: "./tsconfig.json",
   },
-  ignorePatterns: ["build/", "node_modules/"]
+  ignorePatterns: ["build/"],
 }

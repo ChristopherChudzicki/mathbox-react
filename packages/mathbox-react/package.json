@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "build": "rm -rf ./build && yarn build-esm && yarn build-cjs",
-    "build-esm": "tsc",
+    "build-esm": "tsc --project tsconfig.esm.json",
     "build-cjs": "tsc --project tsconfig.cjs.json",
     "build-watch": "tsc --watch",
     "storybook": "start-storybook -p 6006",
@@ -50,7 +50,7 @@
     "@types/jest": "27.5.2",
     "@types/lodash": "4.14.195",
     "@types/react": "18.2.11",
-    "@types/three": "0.152.1",
+    "@types/three": "0.148.0",
     "babel-jest": "27.5.1",
     "babel-loader": "9.1.2",
     "eslint": "^8.32.0",
@@ -60,7 +60,7 @@
     "react-dom": "18.2.0",
     "three": "0.152.2",
     "ts-jest": "27.1.5",
-    "typescript": "^5.0.0"
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "mathbox": "^2.3.1",

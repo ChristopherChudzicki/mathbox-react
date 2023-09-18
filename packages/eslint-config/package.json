@@ -1,18 +1,18 @@
 {
-    "name": "@mathbox-react/eslint-config",
-    "exports": "./index.js",
-    "main": "./index.js",
-    "dependencies": {
-        "eslint-config-airbnb": "19.0.4",
-        "eslint-config-airbnb-typescript": "17.0.0",
-        "eslint-config-prettier": "8.6.0",
-        "eslint-config-react-app": "7.0.1",
-        "eslint-import-resolver-typescript": "3.5.3",
-        "eslint-plugin-import": "^2.26.0",
-        "eslint-plugin-prettier": "4.2.1",
-        "prettier": "2.8.1"
-    },
-    "peerDependencies": {
-        "eslint": "^8.31.0"
-    }
+  "name": "@mathbox-react/eslint-config",
+  "exports": "./index.js",
+  "main": "./index.js",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-prettier": "^4.2.1"
+  },
+  "peerDependencies": {
+    "eslint": "^8.31.0"
+  }
 }

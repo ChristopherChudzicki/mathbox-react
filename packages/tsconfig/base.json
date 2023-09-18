@@ -1,17 +1,16 @@
 {
-    "compilerOptions": {
-      "esModuleInterop": true,
-      "strict": true,
-      "jsx": "react",
-      "module": "ESNext",
-      "moduleResolution": "node16",
-      "declaration": true,
-      "sourceMap": true,
-      "skipLibCheck": true,
-      "allowSyntheticDefaultImports": true,
-      "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true
-    },
-    "exclude": ["build", "node_modules"]
-  }
-  
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "strict": true,
+    "jsx": "react",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["build", "node_modules"]
+}

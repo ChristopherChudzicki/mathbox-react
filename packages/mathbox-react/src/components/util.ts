@@ -71,7 +71,7 @@ const CAN_HAVE_CHILDREN = [
   "slide",
 ] as const
 
-export type ParentNodeTypes = typeof CAN_HAVE_CHILDREN[number]
+export type ParentNodeTypes = (typeof CAN_HAVE_CHILDREN)[number]
 
 export const canNodeHaveChildren = (type: NodeType) =>
   (CAN_HAVE_CHILDREN as readonly string[]).includes(type)

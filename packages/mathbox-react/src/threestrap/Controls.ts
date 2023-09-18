@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { useEffect } from "react"
 import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import type { Vector3 } from "three"
 import { useThreestrap } from "./ThreestrapContext"
 import type { Threestrap } from "./threestrap"
 
@@ -9,6 +10,7 @@ type OrbitControlsProps = {
   enablePan?: boolean
   enableRotate?: boolean
   enableZoom?: boolean
+  target?: Vector3
   onStart?: (event: { type: "end"; target: OrbitControls }) => void
   onEnd?: (event: { type: "end"; target: OrbitControls }) => void
 }
@@ -18,7 +20,15 @@ const ALLOWED_CONTROLS = ["orbit"]
 
 const useOrbitControls = (
   threestrap: Threestrap,
-  { type, enablePan, enableRotate, enableZoom, onStart, onEnd }: ControlsProps
+  {
+    type,
+    enablePan,
+    enableRotate,
+    enableZoom,
+    onStart,
+    onEnd,
+    target,
+  }: ControlsProps
 ) => {
   useEffect(() => {
     if (type !== "orbit") return
@@ -34,6 +44,15 @@ const useOrbitControls = (
       controls.enableRotate = enableRotate
     }
   }, [type, enablePan, enableRotate, enableZoom, threestrap.controls])
+
+  useEffect(() => {
+    if (type !== "orbit") return
+    if (!threestrap.controls) return
+    const controls = threestrap.controls as OrbitControls
+    if (target) {
+      controls.target = target
+    }
+  }, [type, threestrap.controls, target])
 
   useEffect(() => {
     if (type !== "orbit") return () => {}

@@ -2,7 +2,7 @@
   "extends": "@mathbox-react/tsconfig/base.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "outDir": "./build/cjs",
+    "outDir": "./build/cjs"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*"]
 }

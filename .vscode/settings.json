@@ -1,6 +1,4 @@
 {
-    "eslint.alwaysShowStatus": true,
-    "eslint.workingDirectories": [
-        { "pattern": "./packages/*/" }
-    ]
+  "eslint.alwaysShowStatus": true,
+  "eslint.workingDirectories": [{ "pattern": "./packages/*/" }]
 }

@@ -1,7 +1,7 @@
 {
-    "name": "@mathbox-react/tsconfig",
-    "private": true,
-    "files": [
-        "base.json"
-    ]
+  "name": "@mathbox-react/tsconfig",
+  "private": true,
+  "files": [
+    "base.json"
+  ]
 }

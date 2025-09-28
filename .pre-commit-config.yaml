@@ -1,0 +1,62 @@
+ci:
+  skip:
+    - prettier
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude: ".css.d.ts"
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: debug-statements
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.11.0-1
+    hooks:
+      - id: shfmt
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.37.1
+    hooks:
+      - id: yamllint
+        args: [--format, parsable, -d, relaxed]
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args:
+          - --baseline
+          - .secrets.baseline
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.11.9"
+    hooks:
+      - id: ruff-format
+      - id: ruff
+        args: [--extend-ignore=D1, --fix]
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        args: ["--severity=warning"]
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npx prettier --write --no-error-on-unmatched-pattern
+        language: node
+        types_or:
+          [
+            javascript,
+            jsx,
+            ts,
+            tsx,
+            json,
+            scss,
+            sass,
+            css,
+            yaml,
+            markdown,
+            html,
+          ]

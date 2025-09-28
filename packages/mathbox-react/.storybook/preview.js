@@ -1,4 +1,4 @@
-import "mathbox/mathbox.css";
+import "mathbox/mathbox.css"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,4 +8,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-};
+}

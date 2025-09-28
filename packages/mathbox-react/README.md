@@ -2,7 +2,7 @@
 
 React bindings for [Mathbox](https://github.com/unconed/mathbox).
 
-## Example 
+## Example
 
 ```tsx
 import React from "react"

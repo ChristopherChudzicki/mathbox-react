@@ -11,7 +11,7 @@ type OrbitControlsProps = {
   enableRotate?: boolean
   enableZoom?: boolean
   target?: Vector3
-  onStart?: (event: { type: "end"; target: OrbitControls }) => void
+  onStart?: (event: { type: "start"; target: OrbitControls }) => void
   onEnd?: (event: { type: "end"; target: OrbitControls }) => void
 }
 type ControlsProps = OrbitControlsProps

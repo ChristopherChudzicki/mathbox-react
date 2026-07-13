@@ -1,3 +1,4 @@
+import { describe, it, expect } from "vitest"
 import React, { useState } from "react"
 import { render, act } from "@testing-library/react"
 import { MathboxSelection } from "mathbox"

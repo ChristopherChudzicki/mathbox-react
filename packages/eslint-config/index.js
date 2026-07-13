@@ -52,6 +52,7 @@ module.exports = {
           "**/*.spec.tsx",
           "**/playwright.config.ts",
           "**/vite.config.ts",
+          "**/vitest.config.ts",
           "**/*.stories.tsx",
           "**/src/setupTests.ts",
           "**/src/playwright/**",

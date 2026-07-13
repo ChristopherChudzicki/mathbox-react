@@ -13,7 +13,8 @@ type Automock = any
 const getAutomock = <T extends Record<string | symbol, unknown>>(
   specifics?: T
 ): Automock => {
-  const autmockSeed = jest.fn()
+  // Only needs to be callable so the Proxy target supports the `apply` trap.
+  const autmockSeed = () => undefined
   const handler = {
     get(target: Automock, prop: string | symbol) {
       if (prop === Symbol.toPrimitive) {
@@ -37,10 +38,10 @@ const getAutomock = <T extends Record<string | symbol, unknown>>(
 
 export const getMockContext = () => {
   const mockContext = getAutomock({
-    getParameter: jest.fn((name) => {
+    getParameter: (name: unknown) => {
       if (name === mockContext.VERSION) return "Fake version!"
       return getAutomock()
-    }),
+    },
   })
   return mockContext
 }

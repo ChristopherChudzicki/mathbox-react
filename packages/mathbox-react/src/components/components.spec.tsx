@@ -295,18 +295,37 @@ describe("Cartesian", () => {
 
 describe("<Voxel />", () => {
   it("throws a runtime error if it has children", () => {
-    const willThrow = () =>
-      render(
-        <ContainedMathbox>
-          <Cartesian>
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
-            {/* @ts-expect-error */}
-            <Voxel>
-              <Grid />
-            </Voxel>
-          </Cartesian>
-        </ContainedMathbox>
-      )
-    expect(willThrow).toThrow("Component <Voxel /> cannot have children.")
+    /**
+     * In development React re-dispatches errors thrown during render through a
+     * `window` "error" event (invokeGuardedCallbackDev) in addition to
+     * rethrowing them to the caller. Vitest's global "error" listener collects
+     * that expected error as an unhandled error and fails the run — observed
+     * intermittently in CI. Calling preventDefault on the matching event marks
+     * it handled, which suppresses Vitest's collection, while `render` still
+     * throws so the assertion below holds.
+     */
+    const suppressExpectedError = (event: ErrorEvent) => {
+      if (event.error?.message?.includes("cannot have children")) {
+        event.preventDefault()
+      }
+    }
+    window.addEventListener("error", suppressExpectedError)
+    try {
+      const willThrow = () =>
+        render(
+          <ContainedMathbox>
+            <Cartesian>
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment  */}
+              {/* @ts-expect-error */}
+              <Voxel>
+                <Grid />
+              </Voxel>
+            </Cartesian>
+          </ContainedMathbox>
+        )
+      expect(willThrow).toThrow("Component <Voxel /> cannot have children.")
+    } finally {
+      window.removeEventListener("error", suppressExpectedError)
+    }
   })
 })

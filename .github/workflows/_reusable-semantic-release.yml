@@ -30,4 +30,7 @@ jobs:
         working-directory: packages/mathbox-react
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Emit npm provenance explicitly, matching the pre-release path's
+          # `npm publish --provenance` (rather than relying on implicit behavior).
+          NPM_CONFIG_PROVENANCE: "true"
         run: yarn semantic-release

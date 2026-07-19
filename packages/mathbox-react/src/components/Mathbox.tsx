@@ -1,5 +1,5 @@
 import React, {
-  useEffect,
+  useLayoutEffect,
   useState,
   forwardRef,
   useImperativeHandle,
@@ -27,7 +27,7 @@ const Mathbox = (
   const [selection, setSelection] = useState<MathboxSelection<"root"> | null>(
     null
   )
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!container) return () => {}
 
     const mathbox = mathBox({
@@ -48,7 +48,7 @@ const Mathbox = (
     }
   }, [container, mathboxOptions])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!selection) return
     selection.set(rootProps)
   }, [selection, rootProps])

@@ -20,3 +20,8 @@ playwright-report
 
 # typescript
 *.tsbuildinfo
+
+# This is a Yarn repo; an npm lockfile only appears if someone runs `npm`
+# by mistake. Yarn imports it on the next install and rewrites .yarnrc.yml,
+# so keep it out of the repo.
+package-lock.json

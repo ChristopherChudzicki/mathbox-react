@@ -1,6 +1,6 @@
 {
   "name": "mathbox-react",
-  "version": "0.3.0",
+  "version": "0.0.0",
   "description": "React wrapper for Mathbox",
   "license": "ISC",
   "repository": {
@@ -52,11 +52,13 @@
     "@types/react": "18.2.28",
     "@types/three": "0.162.0",
     "babel-loader": "9.2.1",
+    "conventional-changelog-conventionalcommits": "^9",
     "eslint": "^8.32.0",
     "jsdom": "^29",
     "mathbox": "2.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "semantic-release": "^25",
     "three": "0.162.0",
     "typescript": "^5.2.2",
     "vitest": "^4"

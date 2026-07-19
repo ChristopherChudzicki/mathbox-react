@@ -1,0 +1,57 @@
+name: 🔒 internal/reusable-pre-release
+on:
+  workflow_call:
+
+permissions:
+  contents: read # only checks out the repo; this job npm-publishes, it does not create a GitHub release
+  pull-requests: write # to be able to comment on released pull requests
+  id-token: write # to enable use of OIDC for npm provenance
+
+jobs:
+  pre-release:
+    name: Pre-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6
+        with:
+          node-version-file: ".nvmrc"
+          registry-url: "https://registry.npmjs.org"
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+      - name: Pre-release
+        id: pre_release
+        working-directory: packages/mathbox-react
+        run: |
+          VERSION=$(npm version 0.0.0-$(git rev-parse --short HEAD) --git-tag-version false | grep -oE '0\.0\.0-[a-z0-9]+')
+          npm publish --tag preview --provenance --access public
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      - name: Find PR for current branch
+        id: find_pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh pr list --state open --head "$GITHUB_REF_NAME" --json number -q '.[0].number')
+          if [ -n "$PR_NUMBER" ]; then
+            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          fi
+      - name: Comment on the PR if it exists
+        if: steps.find_pr.outputs.pr_number != ''
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ steps.find_pr.outputs.pr_number }}
+          body: |
+            Pre-release workflow has completed successfully.
+            Published version: `${{ steps.pre_release.outputs.version }}`
+
+            To update a previously-installed version with `yarn`:
+            ```bash
+            yarn up mathbox-react@${{ steps.pre_release.outputs.version }}
+            ```

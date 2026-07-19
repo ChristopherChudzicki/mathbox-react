@@ -15,3 +15,17 @@ jobs:
       - run: yarn install --immutable
       - run: yarn lint
       - run: yarn test
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - run: yarn install --immutable
+      # Installs the Chromium build plus the Linux system libraries it needs.
+      # The examples app aliases `mathbox-react` to its TS source, so no build
+      # step is required before the Playwright specs run.
+      - run: yarn workspace examples exec playwright install --with-deps chromium
+      - run: yarn workspace examples test:e2e

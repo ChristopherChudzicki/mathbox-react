@@ -2,7 +2,7 @@ import React, {
   forwardRef,
   useRef,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useReducer,
   useImperativeHandle,
 } from "react"
@@ -40,7 +40,7 @@ const mathboxComponentFactory = <T extends NodeType>(
     const parent = useContext(MathboxAPIContext)
     const selection = useRef<MathboxSelection<T> | null>(null)
     const prevLiveProps = useRef<LiveProps<Props[T]> | undefined>(undefined)
-    useEffect(
+    useLayoutEffect(
       () => () => {
         if (selection.current) {
           selection.current.remove()
@@ -52,7 +52,7 @@ const mathboxComponentFactory = <T extends NodeType>(
     useImperativeHandle(ref, () => selection.current)
 
     const { children, liveProps, ...others } = props
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (!parent) return
       if (isRootDestroyed(parent)) {
         forceUpdate()

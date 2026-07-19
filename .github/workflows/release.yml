@@ -1,0 +1,35 @@
+name: Releases (Semantic & Pre-release)
+run-name: "Release: ${{ inputs.release-type }}"
+on:
+  workflow_dispatch:
+    inputs:
+      release-type:
+        description: "Type of release to publish"
+        required: true
+        type: choice
+        options:
+          - pre-release
+          - semantic-release
+
+permissions:
+  contents: read # for checkout
+
+jobs:
+  pre-release:
+    if: inputs.release-type == 'pre-release'
+    uses: ./.github/workflows/_reusable-pre-release.yml
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+    secrets: inherit
+
+  semantic-release:
+    if: inputs.release-type == 'semantic-release'
+    uses: ./.github/workflows/_reusable-semantic-release.yml
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+    secrets: inherit

@@ -4,7 +4,12 @@
     [
       "@semantic-release/commit-analyzer",
       {
-        "preset": "conventionalcommits"
+        "preset": "conventionalcommits",
+        "releaseRules": [
+          { "type": "refactor", "release": "patch" },
+          { "type": "revert", "release": "patch" },
+          { "type": "build", "release": "patch" }
+        ]
       }
     ],
     [
@@ -13,22 +18,14 @@
         "preset": "conventionalcommits",
         "presetConfig": {
           "types": [
-            {
-              "type": "feat",
-              "section": "Features"
-            },
-            {
-              "type": "fix",
-              "section": "Bug Fixes"
-            },
-            {
-              "type": "chore",
-              "section": "Miscellaneous"
-            },
-            {
-              "type": "docs",
-              "section": "Miscellaneous"
-            }
+            { "type": "feat", "section": "Features" },
+            { "type": "fix", "section": "Bug Fixes" },
+            { "type": "perf", "section": "Performance Improvements" },
+            { "type": "revert", "section": "Reverts" },
+            { "type": "refactor", "section": "Code Refactoring" },
+            { "type": "build", "section": "Build System" },
+            { "type": "chore", "section": "Miscellaneous" },
+            { "type": "docs", "section": "Miscellaneous" }
           ]
         }
       }

@@ -12774,8 +12774,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-prettier@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "eslint-plugin-prettier@npm:4.2.1"
+  version: 4.2.5
+  resolution: "eslint-plugin-prettier@npm:4.2.5"
   dependencies:
     prettier-linter-helpers: "npm:^1.0.0"
   peerDependencies:
@@ -12784,7 +12784,7 @@ __metadata:
   peerDependenciesMeta:
     eslint-config-prettier:
       optional: true
-  checksum: 10/d387f85dd1bfcb6bc6b794845fee6afb9ebb2375653de6bcde6e615892fb97f85121a7c012a4651b181fc09953bdf54c9bc70cab7ad297019d89ae87dd007e28
+  checksum: 10/8e5838bff6c5753c370069a1b71cb0057929d467b7b5ba0efe066365de1e944a27d1d44cb0c2e8c3beb2c806c1b98e98fc320f96dd59f11741c4309856383868
   languageName: node
   linkType: hard
 

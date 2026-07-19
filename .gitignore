@@ -13,3 +13,10 @@ dist
 
 # turborepo
 .turbo
+
+# playwright
+test-results
+playwright-report
+
+# typescript
+*.tsbuildinfo

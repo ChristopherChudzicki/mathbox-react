@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository layout
 
-Yarn 3 monorepo (workspaces under `packages/*`), orchestrated with [Turborepo](https://turbo.build/):
+Yarn monorepo (workspaces under `packages/*`), orchestrated with [Turborepo](https://turbo.build/):
 
 - `packages/mathbox-react` — the published npm package (the real code)
 - `packages/examples` — a Vite app demonstrating usage (private, not published)
@@ -17,7 +17,7 @@ Yarn 3 monorepo (workspaces under `packages/*`), orchestrated with [Turborepo](h
 
 ## Commands
 
-Use **Yarn, not npm** (`packageManager: yarn@3.3.1`). Node is pinned to `24` (`.nvmrc`).
+Use **Yarn, not npm** (`packageManager: yarn@4.17.1`). Node is pinned to `24` (`.nvmrc`).
 
 Root scripts run the matching task across all workspaces via Turbo:
 - `yarn lint` / `yarn test` / `yarn build`

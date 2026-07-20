@@ -30,7 +30,6 @@
     "build-watch": "tsc --watch",
     "storybook": "start-storybook -p 6006",
     "lint": "eslint \"**/*.ts?(x)\"",
-    "prepack": "yarn build",
     "test": "vitest run",
     "test:watch": "vitest"
   },

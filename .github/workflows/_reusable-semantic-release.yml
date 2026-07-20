@@ -24,6 +24,12 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
         run: yarn install --immutable
+      # Build here, before semantic-release bumps the version. The package
+      # publishes its prebuilt `build/` dir; we can't build during `npm publish`
+      # (via a `prepack` hook) because the version bump makes yarn.lock stale and
+      # CI runs Yarn in immutable mode, so any Yarn resolve at that point fails.
+      - name: Build
+        run: yarn build
       - name: Release
         working-directory: packages/mathbox-react
         env:

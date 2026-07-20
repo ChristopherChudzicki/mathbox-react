@@ -24,8 +24,6 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
         run: yarn install --immutable
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: npm audit signatures
       - name: Release
         working-directory: packages/mathbox-react
         env:

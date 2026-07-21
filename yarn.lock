@@ -13103,7 +13103,7 @@ __metadata:
   resolution: "mathbox-react-root@workspace:."
   dependencies:
     concurrently: "npm:^8.0.0"
-    prettier: "npm:^2.8.8"
+    prettier: "npm:^3.0.0"
     turbo: "npm:^1.7.0"
   languageName: unknown
   linkType: soft
@@ -15084,12 +15084,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.8.8":
-  version: 2.8.8
-  resolution: "prettier@npm:2.8.8"
+"prettier@npm:^3.0.0":
+  version: 3.9.5
+  resolution: "prettier@npm:3.9.5"
   bin:
-    prettier: bin-prettier.js
-  checksum: 10/00cdb6ab0281f98306cd1847425c24cbaaa48a5ff03633945ab4c701901b8e96ad558eb0777364ffc312f437af9b5a07d0f45346266e8245beaf6247b9c62b24
+    prettier: bin/prettier.cjs
+  checksum: 10/b6587f1582ba653ce5207ee227aff646500e5098646931088f176d1ab090b1f47d5a333f1facd634e9aa7dcb15c45940e2cec13a5962534cf0200617517b67b6
   languageName: node
   linkType: hard
 
